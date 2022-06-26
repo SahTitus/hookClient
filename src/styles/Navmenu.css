@@ -1,0 +1,26 @@
+.navmenu{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.navmenu__option{
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+
+.navmenu__option:hover{
+    background-color: rgba(73, 71, 71, 0.05);
+}
+
+.navmenu__icon{
+    color: #49c085;
+    margin-left: 20px;
+}
+
+.navmenu__option p {
+    color: rgb(248, 248, 248);
+    margin-left: 20px;
+    font-size: 17px;
+}

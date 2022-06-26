@@ -1,0 +1,58 @@
+.homepage {
+	display: flex;
+	margin-top: 55px;
+	flex-direction: column;
+	padding-bottom: 60px;
+	background-color: rgb(255, 255, 255);
+    width: 100%;
+
+}
+
+.overflowHidden{
+	overflow: hidden;
+}
+
+.skeleDark{
+	background-color: #353535 !important;
+}
+
+.skeleDarkAnimat{
+	background-color: rgb(151, 155, 158) !important;
+}
+
+.homepage__dark {
+	background-color: #242526 !important;
+}
+
+.homepage__dark > .homepage__feed {
+	background-color: #242526;
+}
+
+/* .createPost{
+	margin-bottom: px;
+} */
+
+.homepage__feed {
+	/* background-color: rgb(247, 247, 247); */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+.loadash{
+	/* margin-top: 30px;
+	height: 60px; */
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	/* height: 100%; */
+	overflow: hidden;
+}
+
+.Spin_spin__cALIj{
+	border-top-color: rgb(224, 221, 221)!important;
+	border-bottom-color: rgb(224, 221, 221) !important;
+	border-right-color: gray !important;
+	border-left-color: rgb(224, 221, 221) !important;
+}

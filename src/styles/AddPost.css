@@ -1,0 +1,224 @@
+#appPost__whoSeeFormCtrl{
+    background-color: rgb(255, 255, 255);
+    max-width: 100px !important;
+    justify-content: center;
+}
+
+#addPost__optionBtnIcon{
+    background-color: #4caf50  ;
+    transition: 1000ms ;
+}
+
+#textField-Mui-focused{
+    border: 1px solid red !important;
+}
+
+.addPost__optionIcon{
+    color: white ;
+}
+
+.addPost__optionText{
+    color: #4caf50 !important;
+}
+
+/* #appPost__select{} */
+
+.addPost {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: rgb(255, 255, 255);
+    height: 100%;
+    overflow-y: scroll;
+    margin-bottom: 50px;
+    justify-content: space-between;
+}
+
+.addPost__header{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 5px 2px -5px rgba(0, 0, 0, 0.4) !important;
+    background-color: white !important;
+    height: 60px;
+    width: 100%;
+    z-index: 10;
+}
+
+.addPost__headerIcon{
+    color: rgb(78, 78, 78);
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.addPost__header button {
+    padding: 4px 15px;
+    font-size: 18px;
+    border-radius: 6px;
+    border-color: #67ac98;
+    background-color: #5fb99e;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.addPost__top{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 55px;
+}
+
+.addPost__avatar{
+    margin-left: 10px;
+}
+
+.select__hallTop{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 5px 3px -5px rgba(0, 0, 0, 0.2) !important;
+    background-color: white ;
+    height: 60px;
+    width: 100%;
+    z-index: 10;
+}
+
+.select__hallSearch{
+    background: transparent;
+    display: flex;
+    flex: 1;
+    padding: 10px;
+    height: 40px;
+}
+
+.select__hallSearchContainer{
+    width: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 3px 2px #dbdee0;
+}
+
+.select__hallSearchContainer>input {
+    width: 100%;
+    border: none;
+    outline-width: 0;
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+.select__hallSearchIcon {
+    color: gray;
+    cursor: pointer;
+}
+
+.select__hallList{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.textFields{
+    display: flex;
+    flex-direction: column;
+ 
+    flex: 1;
+    color: #4caf50;
+
+}
+
+.textField{
+    display: flex;
+    justify-content: center;
+}
+
+.textArea{
+    resize: none;
+    width: 95% !important;
+    min-height: 50px;
+    font-size: 16px;
+    border: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* margin: 20px; */
+}
+
+.textArea::placeholder{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.textArea:focus-visible{
+  outline-offset: 0px;
+  outline: none;
+}
+
+.addPost__bottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    min-height: 100px;
+    position:fixed;
+    bottom: 0;
+    background-color: #ffffff;
+    box-shadow: 0px 5px 30px -5px rgba(0, 0, 0, 0.3),
+		-1px -1px 2px -1px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgb(255, 255, 255);
+    border-top-left-radius: 20px ;
+    border-top-right-radius: 20px ;
+}
+
+.addPost__bottomExpand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    position:fixed;
+    bottom: 0;
+    color: rgb(97, 96, 96);
+    background-color: #ffffff;
+    box-shadow: 0px 5px 30px -5px rgba(0, 0, 0, 0.3),
+		-1px -1px 2px -1px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgb(255, 255, 255);
+    border-top-left-radius: 20px ;
+    border-top-right-radius: 20px ;
+}
+
+.addPost__bottom p{
+    text-align: center;
+    font-weight: 550;
+    font-size: small;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.addPost__bottomChild{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.addPost__option{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.addPost__option p{
+    font-size: small;
+    color: rgb(77, 75, 75);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* .createPost{
+    display: none;
+} */

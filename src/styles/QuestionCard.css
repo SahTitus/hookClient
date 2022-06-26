@@ -1,0 +1,149 @@
+.questionCard {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  height: fit-content;
+  background-color: white;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 5px 0;
+  box-shadow: 0px 1px 1px 0 rgba(0, 0, 0, 0.2);
+  user-select: none;
+}
+
+.questionCardDark {
+  background-color: #242526;
+}
+
+.questionCard__top {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  margin: 0 15px;
+}
+
+.questionCard__topLeft {
+  display: flex;
+}
+
+.questionCard__topLeftText {
+  margin-left: 10px;
+}
+
+.questionCard__topLeftText span {
+  color: gray;
+}
+
+.questionCardDark .questionCard__topLeftText span {
+  color: rgb(172, 172, 172);
+}
+
+.askTime__dark{
+  color: rgb(218, 42, 42);
+}
+
+.questionCard__topLeftTextGroupName {
+  font-weight: 500;
+}
+
+.questionCard__topLeftTextGroupName span {
+  margin-right: 5px;
+  color: gray;
+  font-weight: 100;
+}
+
+.questionCardDark .questionCard__rightIcon {
+  color: rgb(228, 77, 17);
+  stroke: #242526;
+  cursor: pointer;
+}
+.questionCard__rightIcon {
+  color: rgb(228, 77, 17);
+  cursor: pointer;
+}
+
+.questionCard__middle {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 15px 15px;
+}
+
+.questionCard__question {
+  font-size: 20px;
+}
+
+.questionCard__bottom {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10px;
+}
+
+.questionCard__bottomLeft {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.questionCard__bottomRight {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.questionCard__bottomOption {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid lightgray;
+  -webkit-tap-highlight-color: transparent;
+  margin: 5px;
+  min-width: 90px;
+  height: 30px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.questionCard__bottomIcon {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 20px !important;
+  margin-right: 5px;
+}
+
+.questionCardDark .questionCard__bottomIcon {
+    color: rgb(235, 235, 235);
+}
+
+.questionCard__bottomOption p {
+  font-size: 13px;
+  margin-right: 3px;
+}
+
+.questionCard__bottomOptionAns {
+  /* border-color: green; */
+}
+
+.questionCard__bottomEditIcon {
+  color: #ffbb00;
+  font-size: 20px !important;
+  margin-right: 5px;
+}
+
+.questionCard__bottomOptionAnsBox {
+  border: none;
+}
+
+@media screen and (max-width: 300px) {
+  .questionCard__bottomOption {
+    width: 50px;
+    min-width: 75px;
+    height: 30px;
+  }
+
+  .questionCard__bottomOption p {
+    font-size: 11px;
+    margin-right: 3px;
+  }
+  .questionCard__bottomIcon {
+    font-size: 18px !important;
+  }
+}

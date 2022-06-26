@@ -1,0 +1,317 @@
+.postForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.postForm__avatar {
+    margin-bottom: 15px;
+}
+
+.MuiInputLabel-formControl {
+
+    position: relative !important;
+}
+
+.MuiFormControl-root {
+    min-width: 160px !important;
+    height: 50px;
+}
+
+.MuiSelect-selectMenu {
+    height: 20px !important;
+}
+
+.MuiSelect-select {
+    min-width: 50px !important;
+}
+
+.MuiOutlinedInput-input {
+    padding: 10px !important;
+}
+
+.gas {
+    display: flex;
+    align-items: center;
+    margin-top: -10px !important;
+    margin-left: 8px;
+
+}
+
+
+.postForm__top {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 5px 3px -4px rgba(0, 0, 0, 0.4) !important;
+    background-color: white !important;
+    height: 60px;
+    width: 100%;
+    z-index: 10;
+}
+
+.postForm__topIcon {
+    color: rgb(78, 78, 78);
+    margin-left: 10px;
+}
+
+.postForm__top button {
+    padding: 5px 15px;
+    font-size: 18px;
+    border-radius: 6px;
+    border-color: #67ac98;
+    background-color: #5fb99e;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.post__optionContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px;
+    margin-top: 75px;
+}
+
+.post__optionContainerRight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post__option {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+    border: 1px solid lightgray;
+    padding: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: gray;
+}
+
+.post__optionBox1 {
+    display: flex;
+    align-items: center;
+}
+
+.post__optionIcon {
+    color: orange;
+}
+
+.post__optionContainerLeft {
+    display: flex;
+    flex-direction: column;
+}
+
+.post__optionContainerLeft p {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.postForm__inputs {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    margin: 20px;
+}
+
+.postForm__inputs textarea {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    border: none;
+    outline-width: 0;
+    word-break: break-all;
+    width: 100%;
+    outline-width: 1px;
+    outline-color: lightgray;
+}
+
+.postForm__inputs textarea::placeholder {
+    font-size: 17px;
+}
+
+.postForm__titleInput {
+    height: 40px;
+}
+
+.postForm__textInput {
+    height: 50px;
+}
+
+/* add post icon */
+
+.addFab {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    z-index: 10000 !important;
+}
+
+.addFab__icon {
+    background-color: #4caf50 !important;
+    color: white !important;
+}
+
+.addFab__icon:hover {
+    background-color: #386e3a !important;
+}
+
+.addFab__add {
+    font-size: 30px !important;
+}
+
+.imagePrev__card {
+    height: fit-content;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.imagePrev {
+    height: 350px;
+    width: 100%;
+    object-fit: fill;
+    border-radius: 5px;
+}
+
+.closeImgButton {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    right: 28px;
+    top: 300px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgb(31, 29, 29);
+    color: rgb(255, 255, 255) !important;
+    cursor: pointer;
+}
+
+.postFormHeaders {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 5px 3px -4px rgba(0, 0, 0, 0.4) !important;
+    background-color: white !important;
+    height: 60px;
+    width: 100%;
+    z-index: 10;
+}
+
+.questionInput {
+    margin-top: 70px;
+}
+
+.pollQuestion{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.pollQuestion >.MuiFormControl-root {
+    height: fit-content !important;
+    width: 90%;
+}
+
+.pollOption {
+    display: flex;
+    border: 2px solid rgb(114, 114, 114);
+    height: 40px;
+    width: 90%;
+    border-radius: 5px;
+    margin: 20px 10px;
+}
+
+.pollOption__input {
+    border: none;
+    width: 100%;
+    margin-left: 5px;
+    outline-width: 0;
+}
+
+.pollOption__input::placeholder {
+    font-size: 17px;
+}
+
+.deleteOpt {
+    position: absolute;
+    margin-top: 2px;
+    left: 4.5%;
+    display: flex;
+    background-color: white;
+    color: gray;
+
+}
+
+.addOpt {
+    position: absolute;
+    margin-top: 20px;
+    right: 5%;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    min-width: 80px;
+    padding: 6px;
+    background-color: white;
+    border-color: #386e3a;
+    font-size: 16px;
+    color: #386e3a;
+
+}
+
+.btnBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.poll__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.poll__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* .pollOption__counter {
+    margin-left: 10px;
+    font-size: 16px;
+} */
+
+.linkInput{
+    margin-top: 70px;
+}
+
+.linkInputContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* .pollQuestion__say{
+    margin-top: 20px;
+    width: 100% ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */

@@ -1,0 +1,148 @@
+.explore {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 120px;
+    margin-top: 55px;
+    flex: 1;
+}
+
+.explore__news{
+    display: flex;
+    overflow-x: scroll;
+    border-bottom: 1px solid lightgray;
+}
+
+.explore__news::-webkit-scrollbar{
+    display: none;
+}
+
+.explore__top {
+    display: flex;
+    overflow-x: scroll;
+    height: fit-content;
+    width: 100%;
+}
+.explore__top::-webkit-scrollbar{
+    display: none;
+}
+
+.explore__topCard {
+    display: flex;
+    flex-direction: column;
+    margin-right: -60px;
+    height: fit-content;
+    min-width: 320px;
+    padding: 20px 10px;
+}
+
+.explore__topCardInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.explore__topCardInfo p {
+    font-size: 20px;
+    font-weight: 700;
+    color: #03875f;
+}
+
+
+.explore__topCardInfo span {
+    margin-top: 5px;
+    margin-bottom: 30px;
+    font-size: 15px;
+    color: rgb(52, 45, 66);
+}
+
+.explore__topCardImage {
+    max-height: 160px;
+    border-radius: 15px;
+    width: 80%;
+}
+
+.exploreBanner{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    height: fit-content;
+    
+}
+
+.exploreBanner__content{
+    display: flex;
+    align-items: center;
+    background-color: royalblue;
+    border-radius: 15px;
+    height: 100px;
+    width: 95%;
+}
+
+.exploreBanner__content h4 {
+    color: white;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.explore__pairCards{
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    margin-top: 30px;
+    padding: 20px 0;
+}
+
+.explore__pairCardsTop{
+    padding: 10px;
+}
+
+.explore__pairCardsTop h4{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.explore__pairCardsTop p{
+    font-size: 15px;
+    color: rgb(95, 95, 95);
+}
+
+.pairCards{
+    display: flex;
+    width: 100%;
+    height: fit-content;
+}
+
+.pairCards__card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+    width: 50%;
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.15);
+    padding: 13px 10px;
+    background-color: rgb(255, 255, 255);
+    height: 200px;
+    border-radius: 15px;
+}
+
+.pairCards__card p{
+    /* color: white; */
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.pairCards__card hr {
+    background-color: #0f9e73;
+    border: none;
+    height: 8px;
+    border-radius: 80px;
+}
+
+.pairCards__card img {
+    max-height: 70px;
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}

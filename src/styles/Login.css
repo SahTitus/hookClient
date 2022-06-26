@@ -1,0 +1,168 @@
+.login {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	z-index: 1000000;
+}
+
+.loginDark{
+	background-color: #242526;
+	color: #fff;
+}
+
+.loginDark input{
+	background-color: #242526;
+	color: #fff;
+}
+
+.login__top {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.hokLogo {
+	height: 50px;
+}
+
+.hookLogo {
+	height: 40px;
+	object-fit: cover;
+}
+
+.login__containerTitle {
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
+
+.login__flexTitle {
+	width: 85%;
+}
+
+.login__container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.login__form {
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2);
+	padding: 10px;
+	/* flex: 0.7; */
+	border-radius: 5px;
+	width: 85%;
+}
+
+.loginDark .login__form{
+	background-color: #242526;
+	box-shadow: 0px 0px 4px 1px rgba(255, 255, 255, 0.2);
+}
+
+.login__inputOption {
+	display: flex;
+	align-items: center;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	border-radius: 5px;
+	height: 45px;
+	width: 100%;
+	margin: 10px 0;
+}
+
+.loginDark .login__inputOption {
+background-color: #3d3d3d;
+}
+
+.login__formInput {
+	height: 100%;
+	width: 100%;
+	margin: 0 5px;
+	border: none;
+	outline-width: 0;
+}
+
+.loginDark .login__formInput {
+background-color: #3d3d3d;
+}
+
+
+
+.login__formInput::placeholder {
+	font-size: 16px;
+}
+
+.loginDark .login__formInput::placeholder {
+	color: #fff;
+}
+
+.loginDark .showPassword{
+	color: rgb(255, 255, 255);
+}
+
+.signIn__button {
+	margin: 20px 0 !important;
+	background-color: #03875f !important;
+	color: white !important;
+	border-radius: 40px !important;
+}
+
+.signInWithGoogle__button {
+	background-color: white !important;
+	border: 1px solid rgba(0, 0, 0, 0.1) !important;
+	margin: 20px 0 !important;
+	border-radius: 40px !important;
+}
+
+.loginDark .signInWithGoogle__button {
+	background-color: #212121 !important;
+	color: #fff;
+	box-shadow: 0px 0px 2px 2px rgba(255, 255, 255, 0.2);
+}
+
+.login__formDivider {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.login__formDivider hr {
+	height: 1px;
+	background-color: rgb(201, 198, 198);
+	border: none;
+	width: 100%;
+}
+
+.login__formDivider p {
+	margin: 0 10px;
+	font-size: 17px;
+	color: rgb(131, 130, 130);
+}
+
+.googleLogo {
+	height: 25px;
+	border-radius: 50%;
+	object-fit: cover;
+	margin-right: 10px;
+}
+
+.FacebookLogo{
+	height: 25px;
+	border-radius: 50%;
+	object-fit: cover;
+	margin-right: 10px;
+}
+
+.login__newUser {
+	font-size: 17px;
+}
+
+.login__newUser span {
+	font-weight: bold;
+	margin-left: 5px;
+	color: #03875f;
+	cursor: pointer;
+}

@@ -1,0 +1,113 @@
+.categories {
+	margin-top: 55px;
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 60px;
+	user-select:none;
+}
+
+.categories__header {
+	display: flex;
+	justify-content: space-between;
+}
+
+.categories__header h3 {
+	font-size: 25px;
+	font-weight: 700;
+	padding: 10px;
+}
+
+.categories__headerButtons {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.categories__headerButtons button {
+	margin: 5px;
+	display: flex;
+	align-items: center;
+	border-radius: 30px;
+	border-color: rgb(159, 206, 247);
+	cursor: pointer;
+	max-width: 160px;
+	font-weight: 700;
+	padding: 3px 10px;
+	background-color: rgba(0, 0, 0, 0.03);
+	-webkit-tap-highlight-color: transparent;
+}
+
+.categories__headerButtons button p{
+color: #000;
+}
+
+.categoriesDark .categories__headerButtons button p{
+	color: white ;
+}
+
+.categories__headerButtonsIconDark{
+	color: rgb(209, 204, 204) !important;
+}
+
+.categories__headerButtons button:hover {
+	background-color: rgba(0, 0, 0, 0.06);
+}
+
+.categories__headerButtons button:hover > .categories__headerButtonsIcon {
+	color: royalblue;
+}
+
+.categories__headerButtonsIcon {
+	margin-right: 5px;
+	color: rgba(0, 0, 0, 0.9);
+}
+
+.categories__container {
+	display: flex;
+	flex-direction: column;
+}
+
+.categories__recommended {
+	display: flex;
+	flex-direction: column;
+	margin-top: 30px;
+	flex: 1;
+}
+
+.categories__recommendedTop {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px;
+}
+
+.categories__recommendedTop p {
+	background-color: rgba(0, 0, 0, 0.06);
+	padding: 10px;
+	font-size: 15px;
+	border-radius: 30px;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.categories__recommendedTop p:hover {
+	background-color: rgba(0, 0, 0, 0.03);
+}
+
+.categories__recommendedScroll {
+	display: flex;
+	height: fit-content;
+	overflow: hidden;
+	overflow-x: scroll;
+	padding: 8px;
+}
+
+.categories__recommendedScroll::-webkit-scrollbar {
+	display: none;
+}
+
+@media screen and (max-width: 300px) {
+	.categories__header h3 {
+		display: none;
+	}
+}

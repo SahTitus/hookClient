@@ -1,0 +1,158 @@
+.post {
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	margin: 8px 0;
+	width: 100%;
+	box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.01);
+	height: fit-content;
+	border-bottom: 1px solid rgb(230, 228, 228);
+}
+
+.post__top {
+	padding: 15px 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.post__topHeader {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+.post__topLeft {
+	display: flex;
+}
+
+.post__topLeftText {
+	margin-left: 10px;
+}
+
+.post__topLeftText a > p {
+	color: black;
+	font-weight: 500;
+}
+
+.in {
+	color: #606060;
+	font-size: 14px;
+}
+
+.post__topLeftText > span {
+	color: #606060;
+	font-size: 13px;
+}
+
+.post__topRight {
+	display: flex;
+	justify-content: center;
+}
+
+.post__topTitle {
+	color: rgb(88, 88, 88);
+	font-weight: 500;
+	font-size: 18px;
+}
+
+.post__middle {
+	align-items: center;
+	box-sizing: border-box;
+	word-break: break-all;
+	padding: 10px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.post__image {
+	width: 100%;
+	object-fit: fill;
+	max-height: 500px;
+	height: 100%;
+}
+
+.post__footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.post__footerOption {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 27%;
+	padding: 6px;
+	cursor: pointer;
+}
+
+.post__footerOption:hover {
+	background-color: rgba(0, 0, 0, 0.04);
+	transition: background-color 950ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.post__footerLikes {
+	cursor: auto;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.post__footerLikes1 {
+	cursor: auto;
+	display: flex;
+	align-items: center;
+}
+
+.post__footerOptionVote {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+.post__footerOptionVote1 {
+	display: flex;
+	text-align: center;
+}
+
+.post__vote {
+	margin-top: -7px;
+}
+
+.voteUp {
+	margin-right: 5px;
+	font-size: 22px !important;
+	color: rgba(0, 0, 0, 0.64);
+	cursor: pointer;
+}
+
+.voteUp:hover {
+	color: royalblue;
+	animation-direction: alternate;
+}
+
+.voteDown {
+	cursor: pointer;
+	margin-left: 5px;
+	font-size: 22px !important;
+	color: rgba(0, 0, 0, 0.64);
+}
+
+.voteDown:hover {
+	color: royalblue;
+}
+
+.post__footerOptionIcon {
+	font-size: 20px !important;
+	color: rgba(0, 0, 0, 0.54);
+}
+
+.post__footerOption > p {
+	font-size: 13px;
+	color: rgb(88, 88, 88);
+}
+
+.drawer {
+	margin-top: 120px;
+}

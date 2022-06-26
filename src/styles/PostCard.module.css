@@ -1,0 +1,230 @@
+.postCard {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(236, 234, 234);
+  background-color: rgb(255, 255, 255);
+  user-select: none;
+}
+
+.postCardDark{
+    background-color: #242526;
+    color: white;
+    border-bottom: 2px solid rgb(22, 22, 22);
+}
+
+.postCardDark .repostedCard {
+    color: #fff ;
+    border-bottom: 1px solid rgb(27, 27, 27);
+}
+
+
+.postCardDark .repostedCardIcon {
+   stroke: #242526 ;
+}
+
+.repostedCard{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(226, 226, 226);
+    height: 30px;
+    font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    color: rgb(104, 104, 104);
+
+}
+
+.repostedCardIcon {
+    margin-left: 10px;
+    font-size: 18px !important;
+}
+
+.repostedCard p {
+    margin: 0 5px;
+    font-weight: 700;
+    font-size: 15px;
+ 
+}
+
+.repostMargin{
+    margin-top: 3px;
+}
+
+.top{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px;
+}
+
+.topLeft{
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.avatar{
+   height: 35px !important;
+   width: 35px !important;
+}
+
+.info{
+    margin-left: 5px;
+}
+
+.username{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 500;
+}
+
+.info p{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.info span{
+    display: flex;
+    align-items: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(141, 141, 141);
+}
+
+.postCardDark .info span {
+    color: rgb(202, 202, 202);
+}
+
+.dot{
+    margin: 0 5px;
+    font-size: 4px !important;
+    color: rgb(102, 102, 102);
+}
+
+.globe{
+    font-size: 15px !important;
+}
+
+.topHoriz{
+    cursor: pointer;
+    color: rgb(131, 128, 128);
+}
+
+.topHorizDark{
+    color: rgb(173, 172, 172);
+}
+
+.middle{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    margin: 5px 0;
+}
+
+.description{
+    display: flex;
+    word-break: break-all;
+    margin: 0 10px;
+    margin-bottom: 5px;
+}
+
+.content{
+    display: flex;
+    word-break: break-all;
+    /* border-top: 1px solid rgb(238, 235, 235); */
+    justify-content: center;
+}
+
+.contentText p{
+    margin: 5px 10px;
+}
+
+.contentText{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.content img{
+    width: 100%;
+    max-width: 700px;
+	object-fit: fill;
+	max-height: 770px;
+	min-height: 100px;
+}
+
+
+
+
+.bottom{
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+}
+
+.bottomCounts{
+    display: flex;
+    justify-content: space-between;
+}
+
+.likes{
+    display: flex;
+    align-items: center;
+    flex: 1;
+    color: rgb(104, 104, 104);
+    font-size: 12px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.likes span {
+    font-size: 13px;
+    margin-left: -4px;
+}
+
+.likeFill{
+    color: green;
+    font-size: 20px !important;
+	user-select: none;
+	stroke: white;
+	stroke-width: 1.1px !important;
+}
+
+.rightCounts{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.rightCounts > span, .likes p{
+    align-items: center;
+    margin: 0 5px;
+    color: rgb(104, 104, 104);
+    font-size: 12px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.rightCountsDark > span, .rightCountsDark > p {
+    color: rgb(204, 204, 204);
+}
+
+.bottomOptions{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 10px;
+}
+
+.bottomIcons{
+	font-size: 20px !important;
+	user-select: none;
+	color: rgb(104, 104, 104) !important;
+	stroke: white;
+	stroke-width: 1.1px !important;
+    cursor: pointer;
+}
+
+.bottomIconsDark{
+    color: rgb(197, 197, 197)!important;
+    stroke: #242526;
+}

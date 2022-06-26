@@ -1,0 +1,177 @@
+.chatRoom {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+	flex: 1;
+}
+
+.chatRoom__header {
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #ffffff;
+	width: 100%;
+	padding: 10px 0;
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.chatRoom__headerLeft {
+	display: flex;
+	align-items: center;
+	margin-left: 10px;
+}
+
+.chatRoom__headerAvatar {
+	cursor: pointer;
+}
+
+.chatRoom__headerLeftInfo {
+	margin-left: 20px;
+	flex: 1;
+}
+
+.chatRoom__headerInfo > h4 {
+	font-size: 17px;
+	color: rgb(22, 22, 22);
+	font-weight: lighter;
+	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+		"Lucida Sans", Arial, sans-serif;
+}
+
+.chatRoom__headerInfo > p {
+	color: rgb(109, 107, 107);
+}
+
+.chatRoom__headerRight {
+	display: flex;
+	align-items: center;
+	margin-right: 10px;
+}
+
+.chatRoom__headerRight > .MuiIconButton-root {
+	/* min-width: 4vw !important; */
+	color: gray !important;
+}
+
+.chatRoom__body {
+	background-image: url("/src/images/Parenting.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	flex-direction: column;
+	display: flex;
+	flex: 1;
+	overflow: auto;
+	height: 100%;
+}
+
+.chatRoom__message {
+	max-width: fit-content;
+	height: fit-content;
+	border-radius: 0px 10px 10px 10px;
+	position: relative;
+	margin-top: 60px;
+	flex-direction: column;
+	padding: 10px;
+	margin-left: 10px;
+	margin-bottom: -40px;
+	flex-wrap: wrap;
+	word-break: break-all;
+	background-color: white;
+	box-shadow: -4px 20px -1px 6px rgba(236, 236, 236, 0.7);
+}
+
+.chatRoom__receipient {
+	margin-right: 10px;
+	border-radius: 10px 0px 10px 10px;
+	margin-left: auto;
+	background-color: #66ffa1;
+	max-width: 80%;
+}
+
+.chatRoom__timestamp {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	font-size: 11px;
+	font-weight: lighter;
+	position: relative;
+	margin-left: 20px;
+}
+
+.chatRoom__footer {
+	position: fixed;
+	display: flex;
+	background-color: white;
+	align-items: center;
+	justify-content: space-evenly;
+	bottom: 0;
+	height: 60px;
+	width: 100%;
+}
+
+.chatRoom__footer > form {
+	display: flex;
+	align-items: center;
+	border-radius: 20px;
+	flex: 0.8;
+}
+
+.chatRoom__footerTextField {
+	border-radius: 30px !important;
+	margin-left: 10px !important;
+	margin-right: 10px !important;
+	box-shadow: 2px 2px 3px rgba(31, 47, 71, 0.3), -2px 0 4px rgba(0, 0, 0, 0.3) !important;
+	border: none !important;
+	outline-width: 0 !important;
+	width: 100% !important;
+	font-size: 16px !important;
+}
+.MuiFormControl-root.MuiTextField-root.chatRoom__footerTextField {
+	min-width: 16px !important;
+	padding: 5px 0;
+	height: fit-content !important ;
+}
+/* textarea#standard-textarea.MuiInputBase-input.MuiInput-input.MuiInputBase-inputMultiline.MuiInput-inputMultiline{
+background-color: red;
+height: 100% !important;
+width: 90%;
+} */
+
+.chatRoom__footerTextField > .MuiInput-underline::before {
+	display: none !important;
+}
+
+.chatRoom__footerTextField > .MuiInput-underline::after {
+	display: none !important;
+}
+
+.chatRoom__footerSendIcon {
+	color: rgb(0, 0, 0);
+	color: rgb(83, 150, 74);
+	cursor: pointer;
+}
+
+.chatRoom__footerSendBtn {
+	border: none;
+	background-color: white;
+	font-size: 30px !important;
+}
+
+.chatRoom__footerIcons {
+	color: rgb(238, 108, 22);
+	cursor: pointer;
+	box-shadow: -4px 2px 5px rgba(0, 0, 0, 0.2);
+	border-radius: 50%;
+	font-size: 30px !important;
+}
+
+.chatRoom__footerIcons:hover {
+	color: rgb(235, 154, 123);
+	box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,124 @@
+.drawer{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    user-select: none;
+}
+
+.drawerDark .profile{
+    background-color: #242526;
+    border-bottom: 1px solid rgb(31, 30, 30);
+}
+
+.profile{
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 10px; 
+    border-bottom: 1px solid rgb(228, 228, 228);
+    margin-top: 5px;
+}
+
+.drawer a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.profile__avatar{
+    margin-left: 10px;
+}
+
+.profile__left{
+    display: flex;
+    flex: 1;
+}
+
+.profile__info{
+    margin-left: 10px;
+}
+
+.username{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 500;
+}
+
+.drawerDark .username {
+    color: #fff;
+}
+
+.profile__info p{
+    color: rgb(134, 221, 250);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 14px;
+    margin-top: 2px;
+}
+
+.drawer__menu{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+}
+
+.drawerDark .drawer__menu{
+    background-color: #242526;
+}
+
+.menu__item{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: 45px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.menu__itemDark{
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    z-index: 10000 !important;
+}
+
+.toggleIcon{
+    margin-right: 18px;
+    font-size: large;
+}
+
+.menu__item:hover{
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.04);
+
+}
+
+.menu__itemIcon{
+    margin-left: 10px;
+    stroke: white;
+    color: rgb(73, 73, 73);
+}
+
+.drawerDark .menu__itemIcon{
+    stroke: #242526;
+    color: #fff;
+}
+
+.menu__itemLabel{
+    margin-left: 10px;
+    color: rgb(73, 73, 73);
+}
+
+.drawerDark .menu__itemLabel{
+    color: white;
+}
+
+.drawer__divider{
+    /* color: rgb(228, 228, 228); */
+    height: 1px;
+    background-color: rgb(228, 228, 228);
+    border: 0;
+}
+
+.drawerDark .drawer__divider{
+    background-color: rgb(31, 30, 30);
+}

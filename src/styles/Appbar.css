@@ -1,0 +1,128 @@
+.appbar {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	user-select:none;
+}
+
+.appbar__header {
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #ffffff;
+	width: 100%;
+	height: 52px;
+	box-shadow: 0 1px 0px 0 rgba(0, 0, 0, 0.09);
+}
+
+.appbar__headerLeft {
+	display: flex;
+	align-items: center;
+}
+
+.appbar__headerLogo a{
+	display: flex;
+	align-items: center;
+}
+
+.logoImg{
+	height: 20px;
+	margin-left: 4px;
+}
+
+.appbar__headerLogo > h3 {
+	font-weight: 500;
+	font-size: 20px;
+	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+		"Lucida Sans", Arial, sans-serif;
+}
+
+.appbar__headerRight {
+	display: flex;
+	align-items: center;
+}
+
+#appbar__headerRightBtn{
+	height: 42px !important;
+	width: 42px !important;
+}
+
+.appbar__badge{
+	stroke: white !important;
+}
+
+.appbar__headerRightIcon {
+	stroke: white;
+	stroke-width: 1px !important;
+	font-size: 28px !important;
+}
+
+.headerRightIconDark{
+	stroke: #242526;
+	color: rgb(219, 219, 219) !important;
+}
+
+.hideOnScrollDown {
+	display: none;
+}
+
+.PrivateSwipeArea-root-1 {
+	position: relative !important;
+	background-color: rgb(255, 255, 255);
+}
+.PrivateSwipeArea-root-0 {
+	position: relative !important;
+	background-color: rgb(255, 255, 255);
+}
+
+.appbar__drawer{
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background-color: rgb(255, 255, 255);
+}
+
+.appbar__drawerDark{
+	background-color: #242526;
+}
+
+.appbar__drawerDark .appbar__drawerTop{
+	background-color: #242526;
+}
+
+.appbar__drawerTop{
+	position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: white ;
+    height: 45px;
+    width: 100%;
+    z-index: 10;
+}
+
+.drawerClose{
+	stroke: white;
+	color: rgb(63, 62, 62);
+	margin-left: 5px;
+}
+
+.drawerCloseDark{
+	stroke: #242526;
+	color: #ffffff;
+}
+
+.appbarChild{
+	flex: 1;
+}
+
+
+@media screen and (max-width: 300px) {
+	.appbar__headerLogo {
+		display: none;
+	}
+}

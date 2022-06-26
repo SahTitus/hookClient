@@ -1,0 +1,56 @@
+.createGroup{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.createGroup__header{
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    padding: 15px 10px;
+    align-items: center;
+}
+
+.createGroup__headerIcon{
+    cursor: pointer;
+}
+
+.createGroup__headerTitle{
+    margin-left: 10px; 
+}
+
+.createGroup__formContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.createGroup__form{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    justify-content: space-between;
+}
+
+.createGroup__form input {
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid rgb(192, 192, 192);
+    padding: 10px;
+    font-size: 16px;
+    outline-color: #03875f;
+    margin: 10px 0;
+}
+
+.createGroup__formButton{
+    background-color: #03875f !important;
+    color: white !important;
+}
+
+ .MuiButton-root.Mui-disabled {
+    background-color: #74b6a2 !important;
+}

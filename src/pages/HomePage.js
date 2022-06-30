@@ -4,7 +4,7 @@ import "../styles/HomePage.css";
 // import { collection, query, onSnapshot } from "@firebase/firestore";
 // import { db, auth } from "./firebase";
 // import { onAuthStateChanged } from "@firebase/auth";
-
+import AdFab from "../components/AdFab";
 import Spin from "react-cssfx-loading/lib/Spin";
 import BottomNavigation from "../components/BottomNavigation";
 import Appbar from "../components/Appbar";
@@ -14,9 +14,13 @@ import PostCard from "../components/Post/PostCard";
 import { useStateContex } from "../store/StateProvider";
 import SkeLoadash from "../components/SkeLoadash";
 import ErrorMsg from "../components/connectivity/ErrorMsg";
+// import Upload from "../utils/UploadImage";
 
 function Homepage({ posts, isLoading, error }) {
   // const [user, setUser] = useState(null);
+
+  // const dd = window.matchMedia('(prefers-color-scheme: light)').matches
+  // console.log(dd)
 
   const { darkMode } = useStateContex();
 
@@ -34,6 +38,7 @@ function Homepage({ posts, isLoading, error }) {
       <Appbar />
 
       <div className="createPost">{!isLoading && <CreatePost />}</div>
+      {/* <Upload /> */}
       <div className={`homepage__feed `}>
       {/* { (!isLoading && error ) &&  <ErrorMsg error={error} />} */}
         {isLoading ? (
@@ -52,7 +57,7 @@ function Homepage({ posts, isLoading, error }) {
               id={post._id}
               image={post?.image}
               link={post.link}
-              text={post.imageDescription}
+              text={post?.text}
               username="React Lee"
               likes={0}
               dislikes={0}
@@ -80,6 +85,7 @@ function Homepage({ posts, isLoading, error }) {
           image={Food}
         /> */}
       </div>
+      <AdFab />
       <BottomNavigation />
     </div>
   );

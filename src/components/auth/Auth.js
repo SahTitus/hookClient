@@ -103,6 +103,7 @@ function Auth() {
          </>
          )}
           <Input
+
             autoFocus={true}
             type="text"
             placeholder="Email"

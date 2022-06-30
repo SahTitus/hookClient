@@ -11,7 +11,7 @@ async function readDataUrl(file) {
 }
 
 const useUpload = () => {
-	const [image, setImage] = useState("");
+	const [image, setImage] = useState(null);
 
 	const handleOnChangeImageInput = (e) => {
 		const target = e.currentTarget;

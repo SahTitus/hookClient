@@ -1,7 +1,7 @@
 import "../styles/Chats.css";
 import { Search } from "@mui/icons-material";
 import Chat1 from "../pages/Chat1";
-import Sam1 from "../images/Sam1.jpg";
+import Health from "../images/Health.jpg";
 import BottomNavigation from "../components/BottomNavigation";
 import Appbar from "../components/Appbar";
 import { useStateContex } from "../store/StateProvider";
@@ -22,43 +22,43 @@ function Chats() {
         </div>
         <div className="chats__chat">
           <Chat1
-            image={Sam1}
+            image={Health}
             username="PEHJOS"
             message="send me the hacks"
             timestamp="8:00 pm"
           />
           <Chat1
-            image={Sam1}
+            image={Health}
             username="Thamosin"
             message="It was a lie 😜"
             timestamp="7:58 pm"
           />
           <Chat1
-            image={Sam1}
+            image={Health}
             username="HOOKWALL"
             message="i will be dispatching the package soon"
             timestamp="7:48 pm"
           />
           <Chat1
-            image={Sam1}
+            image={Health}
             username="Sah Titus"
             message="Thank you Sir 👍"
             timestamp="7:46 pm"
           />
           <Chat1
-            image={Sam1}
+            image={Health}
             username="Van Dash"
             message="Just keep calm for 5 minutes 🙏 "
             timestamp="7:20 pm"
           />
           <Chat1
-            image={Sam1}
+            image={Health}
             username="Sah Titus"
             message="Thank you Sir 👍"
             timestamp="7:46 pm"
           />
           <Chat1
-            image={Sam1}
+            image={Health}
             username="Van Dash"
             message="Just keep calm for 5 minutes 🙏 "
             timestamp="7:20 pm"

@@ -70,10 +70,11 @@ function BottomNavigation() {
           {/* <Ripple className="rip" color={"#1fecf9"} duration={1500} /> */}
         </NavLink>
 
-        <NavLink
+
+        {/* <NavLink
           className={`btmNav__option ${darkMode && 'btmNav__optionDark'}`}
           style={({ isActive }) => {
-			// setIsHallsClicked(isActive);
+
           }}
           to={"/categories"}
         >
@@ -83,8 +84,8 @@ function BottomNavigation() {
             <SupervisedUserCircleOutlined onClick={toggleHallsClick} className="navBtm__icon" />
           )}
           <p>Halls</p>
-          {/* <Ripple className="rip" color={"#1fecf9"} duration={1500} /> */}
-        </NavLink>
+     
+        </NavLink> */}
 
         <NavLink
           className={`btmNav__option ${darkMode && 'btmNav__optionDark'}`}

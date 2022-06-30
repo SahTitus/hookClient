@@ -53,6 +53,8 @@ function PostCard({
     toggleShowReactions();
   };
 
+  console.log(text)
+
   //StateContext
   const { darkMode } = useStateContex();
 
@@ -173,6 +175,7 @@ const handleSharing = async () => {
         <div className={`${style.content} ${!image && style.contentText}`}>
           {image && <img src={image} alt="" />}
           {text && <p>{text}</p>}
+          {link && <p>{link}</p>}
         </div>
       </div>
 

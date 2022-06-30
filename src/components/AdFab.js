@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 export const  FabWrite = () => {
     return (
     <div className='addFab'>
-    <Link to='/postForm'>
+    <Link to='/addPost'>
         <Fab  className='addPost__icon'>
             <Edit className='addPost__add' />
         </Fab>  
@@ -21,7 +21,7 @@ export const  FabWrite = () => {
 export default function AdFab() {
     return (
         <div className='addFab'>
-            <Link to='/postForm'>
+            <Link to='/addPost'>
             <Fab className='addFab__icon'>
                     <Add className='addFab__add'/>
                 </Fab>

@@ -179,11 +179,11 @@ function PostForm() {
 
 
 	const handleSubmit = async (e) => {
-		e.preventDefault();
-		dispatch(createPost(postData));
-		handleClearData();
-		navigate("/");
-		handleDialogState();
+		// e.preventDefault();
+		// dispatch(createPost(postData));
+		// handleClearData();
+		// navigate("/");
+		// handleDialogState();
 	};
 
 	return (

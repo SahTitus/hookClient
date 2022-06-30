@@ -33,7 +33,6 @@ function Drawer() {
       </Link>
 
       <div className={style.drawer__menu}>
-       
         <div className={style.menu__item}>
           <BookmarksOutlined className={style.menu__itemIcon} />
           <p className={style.menu__itemLabel}>Saved</p>
@@ -49,7 +48,7 @@ function Drawer() {
         </div>
         <hr className={style.drawer__divider} />
       </div>
-<p onClick={logOut}>LogOut</p>
+      <p onClick={logOut}>LogOut</p>
     </div>
   );
 }

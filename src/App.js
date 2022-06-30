@@ -1,22 +1,22 @@
 import React from "react";
 import "./styles/App.css";
-import GroupPage from "./pages/GroupPage";
+// import GroupPage from "./pages/GroupPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomeFeed from "./pages/HomePage";
-import Myhalls from "./pages/Myhalls";
+// import Myhalls from "./pages/Myhalls";
 import Videos from "./pages/Questions";
 import Chats from "./pages/Chats";
 import ChatRoom from "./pages/ChatRoom";
 import PostForm from "./pages/PostForm";
-import CreateGroup from "./pages/CreateGroup";
+// import CreateGroup from "./pages/CreateGroup";
 import Profile from "./pages/Profile";
 // import PollLeaf from "./PollLeaf";
 // import Explore from "./pages/Explore";
 // import PollComponent from "./PollComponent";
 import Auth from "./components/auth/Auth";
 import SearchPage from "./pages/Search";
-import Halls from "./pages/Halls";
-import AddPost from "./pages/AddPost";
+// import Halls from "./pages/Halls";
+import AddPost from "./components/Post/AddPost";
 import {useTheme }from "./utils/useTheme";
 import { ThemeProvider } from "styled-components";
 import  ThemeStyle  from "./styles/ThemeStyle";
@@ -52,14 +52,14 @@ function App() {
             <Routes className='app__body'>
               
               <Route path="/search" element={<SearchPage />} />
-              <Route path="/groupPage" element={<GroupPage />} />
-              <Route path="/categories" element={<Halls />} />
-              <Route path="/createGroup" element={<CreateGroup />} />
+              {/* <Route path="/groupPage" element={<GroupPage />} /> */}
+              {/* <Route path="/categories" element={<Halls />} /> */}
+              {/* <Route path="/createGroup" element={<CreateGroup />} /> */}
               <Route path="/profile" element={<Profile />} />
-              <Route path="/PostForm" element={<PostForm />} />
+              {/* <Route path="/PostForm" element={<PostForm />} /> */}
               <Route path="/addPost" element={<AddPost />} />
               <Route path="/chatRoom" element={<ChatRoom />} />
-              <Route path="/myhalls" element={<Myhalls />} />
+              {/* <Route path="/myhalls" element={<Myhalls />} /> */}
               {/* <Route path="/explore" element={<Explore />} /> */}
               <Route path="/chats" element={<Chats />} />
               <Route path="/questions" element={<Videos />} />

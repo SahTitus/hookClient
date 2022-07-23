@@ -1,47 +1,73 @@
 // import { ThumbDown } from "@material-ui/icons";
 import {
   AutorenewOutlined,
-  ChatBubbleOutlineOutlined,
   Circle,
   IosShareOutlined,
   MoreHoriz,
   Public,
-  ThumbUpOutlined,
-  ThumbUpRounded,
 } from "@mui/icons-material";
-import { Avatar, Box, ClickAwayListener, Drawer } from "@mui/material";
-import React, { useCallback, useState } from "react";
+import {
+  Avatar,
+  Box,
+  ClickAwayListener,
+  Drawer,
+  IconButton,
+} from "@mui/material";
+import React, { useCallback, useEffect, useState } from "react";
 import style from "../../styles/PostCard.module.css";
 import Reactions from "../Reactions";
 import useToggle from "../../utils/useToggle";
 import PostCardMenu from "./PostCardMenu";
 import { useStateContex } from "../../store/StateProvider";
 import { createPost } from "../../actions/posts";
-import { useDispatch } from "react-redux"
-import { parseISO, formatDistanceToNowStrict } from 'date-fns'
+import { useDispatch } from "react-redux";
+import { parseISO, formatDistanceToNowStrict } from "date-fns";
+import { Chat, BoxArrowUp, ArrowRepeat, Heart, HeartFill, Link45deg } from "react-bootstrap-icons";
+import ProgressiveImg from "../ProgressiveImg";
+import { Link, useNavigate } from "react-router-dom";
 
 function PostCard({
   id,
-  username,
+  creatorName,
+  userId,
+  creatorImage,
   description,
   link,
   text,
   noOfShares,
   noOfComments,
-  group,
+  hallName,
+  linkData,
   likes,
   dislikes,
   image,
   onto,
   timestamp,
   question,
-  reposted
+  reposted,
 }) {
   const [liked, setLiked] = useState(false);
   // showReactions
   const { value, toggleValue } = useToggle(false);
   const [reactions, setReactions] = useState([]);
   const dispatch = useDispatch();
+  // const [showIcon, setIconShow] = useState(true);
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(true);
+  const user = JSON.parse(localStorage.getItem("profile"))?.data;
+  const hideReadmore = window.location.href.includes(`${id}`);
+
+  const handleClick = (e) => {
+    if (!hideReadmore) setOpen(!open);
+    // setIconShow(false)
+  };
+
+  // if (!hideReadmore) setOpen(true);
+
+  useEffect(() => {
+    setOpen(false);
+    if (hideReadmore) setOpen(true);
+  }, []);
 
   const toggleShowReactions = () => {
     toggleValue();
@@ -52,8 +78,6 @@ function PostCard({
     toggleReactionsCallback(reaction);
     toggleShowReactions();
   };
-
-  console.log(text)
 
   //StateContext
   const { darkMode } = useStateContex();
@@ -87,9 +111,8 @@ function PostCard({
     setState({ ...state, [anchor]: open });
   };
 
-
   const postData = {
-    text ,
+    text,
     description,
     // hallName,
     question,
@@ -97,39 +120,46 @@ function PostCard({
     // pollOptions: pollOption.value,
     link,
     image,
-    repost: true
+    repost: true,
   };
 
-  const time = formatDistanceToNowStrict(parseISO(timestamp)) 
+  const openPost = () => {
+    navigate(`/postDetails/${id}`)
+  };
 
-const handleSubmit = async (e) => {
-  // e.preventDefault();
-  dispatch(createPost(postData));
-  console.log('Reposted')
-};
-
-const canonical = document.querySelector("link[rel=canonical]");
-let url = canonical ? canonical.href : document.location.href;
-const shareDetails = { url, text, description};
-
-const handleSharing = async () => {
-  if (navigator.share) {
-    try {
-      await navigator
-        .share(shareDetails)
-        .then(() =>
-          console.log("Hooray! Your content was shared to tha world")
-        );
-    } catch (error) {
-      console.log(`Oops! I couldn't share to the world because: ${error}`);
-    }
-  } else {
-    // fallback code
-    console.log(
-      "Web share is currently not supported on this browser. Please provide a callback"
+  const handleSubmit = async (e) => {
+    // e.preventDefault();
+    dispatch(
+      createPost({
+        ...postData,
+        creatorName: user?.result?.displayName,
+        userId: user?.result?.uid,
+      })
     );
-  }
-};
+    console.log("Reposted");
+  };
+
+  const url = `${window.location.origin}/postDetails/${id}`;
+  const shareDetails = { url, text, description };
+
+  const handleSharing = async () => {
+    if (navigator.share) {
+      try {
+        await navigator
+          .share(shareDetails)
+          .then(() =>
+            console.log("Hooray! Your content was shared to tha world")
+          );
+      } catch (error) {
+        console.log(`Oops! I couldn't share to the world because: ${error}`);
+      }
+    } else {
+      // fallback code
+      console.log(
+        "Web share is currently not supported on this browser. Please provide a callback"
+      );
+    }
+  };
 
   const list = (anchor) => (
     <Box
@@ -138,44 +168,124 @@ const handleSharing = async () => {
       onClick={toggleMenu(anchor, false)}
       onKeyDown={toggleMenu(anchor, false)}
     >
-      <PostCardMenu id={id}/>
+      <PostCardMenu id={id} />
     </Box>
   );
 
   return (
-    <div className={`${style.postCard} ${darkMode && style.postCardDark} ${reposted && style.repostMargin}`}>
-      {reposted && 
-      <div className={style.repostedCard}>
-      <AutorenewOutlined className={style.repostedCardIcon} />
-      <p>{username} </p>
-      reposted
-      </div>
-}
-      <div className={style.top}>
+    // <Link to='/chats'>
+    <div
+      className={`${style.postCard} ${darkMode && style.postCardDark} ${
+        reposted && style.repostMargin
+      }`}
+    >
+      {reposted && (
+        <div className={style.repostedCard}>
+          <AutorenewOutlined className={style.repostedCardIcon} />
+          <p>{creatorName} </p>
+          reposted
+        </div>
+      )}
+      {hallName && (
+        <div className={style.hallName}>
+          <Chat />
+          <p>Web development</p>
+        </div>
+      )}
+      <div onClick={openPost} className={style.top}>
         <div className={style.topLeft}>
-          <Avatar className={style.avatar} />
+          <Link to="/profile">
+            <Avatar src={user?.result?.photoURL} className={style.avatar} />
+          </Link>
+
           <div className={style.info}>
-            <p className={style.username}>Brinton Lee</p>
+            {/* <Link to="/profile"> */}
+            <p className={style.creatorName}>{creatorName}</p>
+            {/* </Link> */}
             <span>
-            {time}<Circle className={style.dot} />{" "}
+              { timestamp && formatDistanceToNowStrict(parseISO(timestamp)) }
+              <Circle className={style.dot} />{" "}
               <Public className={style.globe} />{" "}
+              {!!reactions.length && (
+                <>
+                  <Circle className={style.dot} />{" "}
+                  {reactions.slice(0, 5).map((reaction) => (
+                    <span className={style.reaction}>{reaction.label}</span>
+                  ))}
+                </>
+              )}
             </span>
           </div>
         </div>
-        <MoreHoriz
-          onClick={toggleMenu("bottom", true)}
-          className={`${style.topHoriz} ${darkMode && style.topHorizDark}`}
-        />
+        <IconButton onClick={toggleMenu("bottom", true)}>
+          <MoreHoriz
+            className={`${style.topHoriz} ${darkMode && style.topHorizDark}`}
+          />
+        </IconButton>
       </div>
 
       <div className={style.middle}>
         {description ? (
-          <div className={style.description}>{description}</div>
+          <div
+            onClick={handleClick}
+            className={`${style.description} ${open && style.show}`}
+          >
+            <p className={`${style.descText} ${open && style.show}`}>
+              {description}
+            </p>
+
+            {!hideReadmore && (
+              <> {open ? null : <p className={style.readMore}>Read more</p>} </>
+            )}
+          </div>
         ) : null}
-        <div className={`${style.content} ${!image && style.contentText}`}>
-          {image && <img src={image} alt="" />}
+        <div
+          className={`${style.content} ${
+            !image?.image_url && style.contentText
+          }`}
+        >
+          {/* {image && <img src={image} alt="" />} */}
+          {image?.image_url && (
+            <ProgressiveImg
+              src={image?.image_url}
+              placeholderSrc={image?.image_placeholder}
+              // width="700"
+              // height="465"
+            />
+          )}
           {text && <p>{text}</p>}
-          {link && <p>{link}</p>}
+
+          {link && (
+            <div className={`${style.linkCard}`}>
+              {linkData?.linkImage ? (
+                <img src={linkData?.linkImage} alt="" />
+              ) : (
+                <Link45deg className={style.linkCard__imgPlaceholder} />
+              )}
+
+              <div className={style.linkCard__info}>
+                <div
+                  className={`${style.linkCard__descMid} ${
+                    !linkData?.linkDesc && style.linkCard__descMidMargin
+                  }`}
+                >
+                  {linkData?.linkDesc && (
+                    <p className={style.linkCard__desc}>{linkData?.linkDesc}</p>
+                  )}
+                </div>
+
+                <div className={style.linkCard__bottom}>
+                  <p className={style.linkCard__bottomLeft}>
+                    <Link45deg className={style.linkCard__bottomLeftIcon} />
+                    <a target="_self" href={link}>
+                      {linkData?.siteName || link}
+                    </a>
+                  </p>
+                  <span className={style.linkCard__bottomView}>Visit link</span>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
@@ -188,7 +298,7 @@ const handleSharing = async () => {
             </p>
           </ClickAwayListener>
         )}
-        <div className={style.bottomCounts}>
+        {/* <div className={style.bottomCounts}>
           <div
             className={`${style.likes} ${darkMode && style.rightCountsDark}`}
           >
@@ -203,41 +313,50 @@ const handleSharing = async () => {
             }`}
           >
             <span>48 comments</span>
-            <span >10 reposts</span>
+            <span>10 reposts</span>
             <span>7 shares</span>
           </p>
-        </div>
+        </div> */}
         <div className={style.bottomOptions}>
-          {!liked ? (
-            <ThumbUpOutlined
-              onClick={toggleShowReactions}
+          <div className={style.bottomOption} onClick={toggleShowReactions}>
+            {!liked ? (
+              <Heart
+                className={`${style.bottomIcons} ${style.bottomLikeIcon} ${
+                  darkMode && style.bottomIconsDark
+                }`}
+              />
+            ) : (
+              <HeartFill
+                onClick={() => setLiked(!liked)}
+                className={style.likeFill}
+              />
+            )}
+            <p>8</p>
+          </div>
+          <div className={style.bottomOption}>
+            <Chat
               className={`${style.bottomIcons} ${
                 darkMode && style.bottomIconsDark
               }`}
             />
-          ) : (
-            <ThumbUpRounded
-              onClick={() => setLiked(!liked)}
-              className={style.likeFill}
+            <p>11</p>
+          </div>
+          <div className={style.bottomOption} onClick={handleSubmit}>
+            <ArrowRepeat
+              className={`${style.bottomIcons} ${
+                darkMode && style.bottomIconsDark
+              }`}
             />
-          )}
-          <ChatBubbleOutlineOutlined
-            className={`${style.bottomIcons} ${
-              darkMode && style.bottomIconsDark
-            }`}
-          />
-          <AutorenewOutlined
-          onClick={handleSubmit}
-            className={`${style.bottomIcons} ${
-              darkMode && style.bottomIconsDark
-            }`}
-          />
-          <IosShareOutlined
-          onClick={handleSharing}
-            className={`${style.bottomIcons} ${
-              darkMode && style.bottomIconsDark
-            }`}
-          />
+            <p>4</p>
+          </div>
+          <div className={style.bottomOption} onClick={handleSharing}>
+            <BoxArrowUp 
+              className={`${style.bottomIcons} ${
+                darkMode && style.bottomIconsDark
+              }`}
+            />
+            <p>8</p>
+          </div>
         </div>
       </div>
 
@@ -250,6 +369,7 @@ const handleSharing = async () => {
         {list("bottom")}
       </Drawer>
     </div>
+    // </Link>
   );
 }
 

@@ -32,7 +32,7 @@ function AddPostBottom({
 
 
   return (
-    <ClickAwayListener onClickAway={(event) => toggleValue()}>
+    <ClickAwayListener onTouchStart={(event) => toggleValue()} onClickAway={(event) => toggleValue()}>
       <div className="addPost__bottom">
         <p>What Are You Posting?</p>
         <div className="addPost__bottomChild">

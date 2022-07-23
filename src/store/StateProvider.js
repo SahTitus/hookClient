@@ -4,12 +4,13 @@ export const StateContext = createContext();
 
 //wrap our app and provide the Data layer
 export const StateProvider = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(localStorage.getItem("theme") === "dark");
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("theme") === "dark"
+  );
+ 
   const currentTheme = localStorage.getItem("currentTheme");
 
   useEffect(() => {
-
-
     if (currentTheme === "dark") {
       setDarkMode(true);
     } else {
@@ -19,13 +20,14 @@ export const StateProvider = ({ children }) => {
 
   const setMode = (e) => {
     setDarkMode(e.target.checked);
+  
   };
 
   return (
     <StateContext.Provider
       value={{
         darkMode,
-        setDarkMode,
+        // setDarkMode,
         setMode,
       }}
     >

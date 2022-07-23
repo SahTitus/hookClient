@@ -9,7 +9,7 @@ body {
 }
 
 .app{
-  background-color: ${(props) => (props.theme.mode === "dark" ? "#242526" : "")}
+  background-color: ${(props) => (props.theme.mode === "dark" ? "#242526" : "#fff")}
 }
 
 .app__body{

@@ -7,7 +7,8 @@ import HomeFeed from "./pages/HomePage";
 import Videos from "./pages/Questions";
 import Chats from "./pages/Chats";
 import ChatRoom from "./pages/ChatRoom";
-import PostForm from "./pages/PostForm";
+// import PostForm from "./pages/PostForm";
+import PostDetails from "./pages/PostDetails";
 // import CreateGroup from "./pages/CreateGroup";
 import Profile from "./pages/Profile";
 // import PollLeaf from "./PollLeaf";
@@ -25,18 +26,25 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchPosts } from "./actions/posts";
 import OfflineMsg from "./components/connectivity/OfflineMsg"
+// import { authData } from "./redux/auth";
+
+
 
 function App() {
   const theme = useTheme();
   const dispatch = useDispatch();
   const { online } = useNetwork();
 
-  const { posts, isLoading, error } = useSelector((state) => state.posts);
+  const { posts, isLoading, error} = useSelector((state) => state.posts);
+  // const {user } = useSelector((state) => state.auth);
   const feeds = posts.slice().sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+
+// console.log(user)
 
   useEffect(() => {
     dispatch(fetchPosts());
   }, [dispatch]);
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -64,6 +72,7 @@ function App() {
               <Route path="/chats" element={<Chats />} />
               <Route path="/questions" element={<Videos />} />
               <Route path="/auth" element={<Auth />} />
+              <Route path="/postDetails/:id" element={<PostDetails />} />
               <Route path="/"
                element={
                <HomeFeed
@@ -77,7 +86,9 @@ function App() {
           </div>
           {/* <BottomNavigation />			 */}
          
-         {/* {(!online && !isLoading) && <OfflineMsg offline={!online} />} */}
+         {(!online && !isLoading) && 
+         <div className='errorM'><OfflineMsg offline={!online} /></div>
+         }
         </BrowserRouter>
       </div>
 

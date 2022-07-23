@@ -1,0 +1,25 @@
+.addFab {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    z-index: 100 !important;
+    background-color: #1fbb5d !important;
+    border-radius: 50%;
+    display: flex;
+align-items: center;
+justify-content: center;
+    height: 60px;
+    width: 60px;
+    box-shadow: 0 0 2px rgb(37, 37, 37);
+    
+}
+
+.addFabDark{
+    background-color:#1fbb5d!important;
+}
+
+
+.addFab__add {
+    font-size: 30px !important;
+    color: white !important;
+}

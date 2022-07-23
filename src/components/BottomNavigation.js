@@ -9,6 +9,7 @@ import {
   QuestionMark,
   Search,
   SupervisedUserCircle,
+  HomeRounded,
 } from "@mui/icons-material";
 import { NavLink, useLocation } from "react-router-dom";
 import { useStateContex } from "../store/StateProvider";
@@ -53,7 +54,7 @@ function BottomNavigation() {
           {!isHomeClicked ? (
             <HomeOutlined   className="navBtm__icon" />
           ) : (
-            <Home onClick={toggleHomelClick} className="navBtm__icon" />
+            <HomeRounded onClick={toggleHomelClick} className="navBtm__icon" />
           )}
 
           <p>Home</p>

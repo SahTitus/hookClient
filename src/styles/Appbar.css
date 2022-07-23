@@ -51,6 +51,25 @@
 	width: 42px !important;
 }
 
+.authButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 30px;
+	width: 80px;
+	border-radius: 30px;
+	font-size: 17px;
+	font-weight: 600;
+	color: #fff;
+	background-color: #18bb59;
+	cursor: pointer;
+	margin-right: 10px;
+}
+
+.authButton:hover {
+	background-color: #0e6431;
+}
+
 .appbar__badge{
 	stroke: white !important;
 }
@@ -59,6 +78,12 @@
 	stroke: white;
 	stroke-width: 1px !important;
 	font-size: 28px !important;
+}
+
+.appbar__avatar {
+	font-size: 20px ;
+	height: 30px !important;
+	width: 30px !important;
 }
 
 .headerRightIconDark{

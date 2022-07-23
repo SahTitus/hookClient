@@ -1,38 +1,46 @@
 import { Close, KeyboardArrowUp } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { Avatar } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import React, { forwardRef, useState } from "react";
+// import { makeStyles } from "@mui/styles";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/AddPost.css";
-import { createPost } from "../../actions/posts";
-import { useDispatch } from "react-redux";
+import { createPost, sendLink } from "../../actions/posts";
+import { useDispatch, useSelector } from "react-redux";
 import { useStateContex } from "../../store/StateProvider";
 import useToggle from "../../utils/useToggle";
 import Input from "./forms/Input";
 import useClickState from "../../utils/useClickState";
 import AddPostBottom from "./AddPostBottom";
+import Resizer from "react-image-file-resizer";
+// import cloudinary from 'cloudinary-react'
 
-async function readDataUrl(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    // async event handlers
-    reader.onload = (e) => resolve(reader.result);
-    reader.onerror = (e) => reject(reader.error);
-    reader.readAsDataURL(file);
-  });
-}
+// async function readDataUrl(file) {
+//   return new Promise((resolve, reject) => {
+//     const reader = new FileReader();
+//     // async event handlers
+//     reader.onload = (e) => resolve(reader.result);
+//     reader.onerror = (e) => reject(reader.error);
+//     reader.readAsDataURL(file);
+//   });
+// }
 
-const ITEM_HEIGHT = 100;
-const ITEM_PADDING_TOP = 10;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
+// cloudinary.config({
+//   cloud_name: process.env.REACT_APP_CLOUD_NAME,
+//   api_key: process.env.REACT_APP_API_KEY,
+//   api_secret: process.env.REACT_APP_API_SECRET
+// });
+
+// const ITEM_HEIGHT = 100;
+// const ITEM_PADDING_TOP = 10;
+// const MenuProps = {
+//   PaperProps: {
+//     style: {
+//       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+//       width: 250,
+//     },
+//   },
+// };
 
 const initialState = {
   text: "",
@@ -47,12 +55,14 @@ function AddPost() {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(initialState);
   const [image, setImage] = useState(null);
-  const [imgUrl, setImgUrl] = useState(null);
   const { darkMode } = useStateContex();
   const { value, toggleValue } = useToggle(true);
-  const [showImgPrev, setShowImgPrev] = useState(false)
+  const user = JSON.parse(localStorage.getItem("profile"))?.data;
+  const { link } = useSelector((state) => state.posts);
+  const linkUrl = formData.link;
+  const [imageData, setImageData] = useState([]);
+  const [imgPlaceholder, setImgPlaceholder] = useState(null);
 
-  console.log(image);
 
   const {
     toggleImageClick,
@@ -71,38 +81,97 @@ function AddPost() {
   //    (!formData.question.length > 0 ) || formData.question.trim()) ||(textClicked && (!formData.text.length > 0 ) || !formData.text.trim()) || (linkClicked && !formData.link.length > 0) || (pollClicked && !formData.poll.length > 0) || (imageClicked && !formData.image
   //     )
 
-  const handleImgInput = (e) => {
+  const handleImage = (e) => {
     const file = e.target.files[0];
 
-    if (!file.type.startsWith("image/")) {
+    Resizer.imageFileResizer(
+      file,
+      600,
+      700,
+      "JPEG",
+      80,
+      0,
+      (uri) => {
+        setImage(uri);
+      },
+      "base64"
+    );
+
+    Resizer.imageFileResizer(
+      file,
+      50,
+      50,
+      "JPEG",
+      70,
+      0,
+      (uri) => {
+        setImgPlaceholder
+        (uri);
+      },
+      "base64"
+    );
+    if (file["type"].split("/")[0] !== "image") {
       alert("Hehehe 😆 file is not an image");
-      return;
     }
-
-    readDataUrl(file).then((baseImg) => {
-      setImage(baseImg);
-      setShowImgPrev(true)
-    });
+    // setFileToBase(file);
   };
+  // const setFileToBase = (fileData) =>{
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(file);
+  //     reader.onloadend = () =>{
+  //         setImage(reader.result);
+  //     }
 
-  const uploadImage = (e) => {
-    e.preventDefault();
-    setShowImgPrev(false)
-    const data = new FormData();
-    data.append("file", image);
-    data.append("upload_preset", "whhgiuh7");
-    data.append("cloud_name", "gadod");
-    fetch("https://api.cloudinary.com/v1_1/gasod/image/upload", {
+  // }
+
+  // const convertToBase64 = (gg) => {
+  //   console.log("Enter base64 covert");
+  //   return new Promise((resolve) => {
+  //     var reader = new FileReader();
+  //     reader.onload = function () {
+  //       resolve(reader.result);
+  //     };
+  //     reader.readAsDataURL(gg);
+  //   });
+  // };
+
+
+  const files = [imgPlaceholder, image]
+
+  const uploadImage = () => {
+    for (let i = 0; i < files.length; i++) {
+      let file = files[i];
+      const data = new FormData();
+      data.append("file", file);
+      data.append("upload_preset", "whhgiuh7");
+      data.append("cloud_name", "gasod");
+      data.append("folder", "posts");
+      fetch("https://api.cloudinary.com/v1_1/gasod/image/upload", {
       method: "post",
-      body: data,
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        setImgUrl(data.url);
-        console.log(data.url);
+        body: data,
+        mode: "cors",
       })
-      .catch((err) => console.log(err));
+        .then((resp) => resp.json())
+        .then((data) => {
+          // setImageData({ url: data.secure_url, public_id: data.public_id });
+          console.log(data)
+          setImageData(current => [...current, data])
+        })
+        .catch((err) => console.log(err));
+    }
   };
+  
+
+  useEffect(
+    (e) => {
+      if (linkUrl) dispatch(sendLink({ link: linkUrl }));
+      if (formData.link && !formData.description) {
+        setFormData({ ...formData, description: link.title });
+      }
+      if (image) uploadImage();
+    },
+    [linkUrl, image]
+  );
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -110,18 +179,39 @@ function AddPost() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(createPost({ ...formData, image: imgUrl }));
+    dispatch(
+      createPost({
+        ...formData,
+        linkData: {
+          siteName: link.site_name,
+          linkTitle: link.title,
+          linkImage: link.image,
+          linkDesc: link.description,
+        },
+        imageData: {
+          image_url: imageData[1]?.secure_url,
+          image_id: imageData[1]?.public_id,
+          image_placeholderId: imageData[0]?.public_id,
+          image_placeholder: imageData[0]?.secure_url,
+        },
+        username: user?.result?.displayName,
+        userId: user?.result?.uid,
+      })
+    );
     setFormData(initialState);
-    console.log(formData);
-    setImage(null)
+    // setImage(null);
 
     navigate("/");
   };
 
+  // const cancelSelectImg = () => {
+  //   setImage(null);
+  // };
+
   // const l = 4;
   // const characterLimit = 10;
   // const cc = (l / characterLimit) * 360;
-
+console.log(imageData)
   return (
     <form className={`addPost ${darkMode && "addPostDark"}`}>
       <div className="addPost__header">
@@ -146,7 +236,6 @@ function AddPost() {
           <Input
             name="text"
             handleChange={handleChange}
-            autoFocus={true}
             placeholder="What's happening?"
           />
         )}
@@ -170,7 +259,7 @@ function AddPost() {
             />
           )}
 
-        {(imageClicked && image) && (
+        {imageClicked && image && (
           <Input
             handleChange={handleChange}
             name="description"
@@ -179,26 +268,13 @@ function AddPost() {
           />
         )}
 
-        {image && 
-        // <div className=''>
-          <img src={image} alt="" height={280} />
-        // </div>
+        {
+          image && (
+            // <div className=''>
+            <img src={image} alt="" maxheight={500} />
+          )
+          // </div>
         }
-
-        {showImgPrev && imageClicked && (
-          <div className="imgPreview">
-            <div className="prevChild">
-              <div className="prevChild__top">
-                <Close onClick={() => setImage(null)}className="prevChild__topIcon" />
-                <button onClick={uploadImage}> Confirm</button>
-              </div>
-
-
-                <img src={image} alt="" />
-
-            </div>
-          </div>
-        )}
 
         {pollClicked && (
           <Input
@@ -214,7 +290,7 @@ function AddPost() {
             handleChange={handleChange}
             name="link"
             autoFocus={true}
-            multiline={false}
+            multiline={0}
             placeholder="Enter a link"
           />
         )}
@@ -222,7 +298,9 @@ function AddPost() {
           <Input
             handleChange={handleChange}
             name="description"
-            placeholder="Say something about this link (optional)"
+            placeholder={
+              link.title || "Say something about this link (optional)"
+            }
           />
         )}
       </div>
@@ -240,7 +318,7 @@ function AddPost() {
           pollClicked={pollClicked}
           textClicked={textClicked}
           toggleValue={toggleValue}
-          choseImg={handleImgInput}
+          choseImg={handleImage}
         />
       )}
 

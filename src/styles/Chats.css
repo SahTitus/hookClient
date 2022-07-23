@@ -64,6 +64,10 @@
     font-size: 16px;
     margin-left: 5px;
 }
+.chats__searchContainer>input:focus-visible {
+    outline-offset: 0px;
+    outline: none;
+  }
 
 .searchIcon {
     color: gray;
@@ -77,4 +81,5 @@
 .chats__chat {
     background-color: white;
     overflow: auto;
+    margin-top: 10px;
 }

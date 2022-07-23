@@ -148,25 +148,7 @@
 
 /* add post icon */
 
-.addFab {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    z-index: 10000 !important;
-}
 
-.addFab__icon {
-    background-color: #21fc7a !important;
-    color: white !important;
-}
-
-.addFab__icon:hover {
-    background-color: #386e3a !important;
-}
-
-.addFab__add {
-    font-size: 30px !important;
-}
 
 .imagePrev__card {
     height: fit-content;

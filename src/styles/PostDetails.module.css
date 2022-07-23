@@ -1,0 +1,241 @@
+.postDetails{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 180px;
+    user-select: none !important;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    -webkit-user-select:none !important;
+}
+
+.postDetails__top {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    background-color: #fff;
+/* background-color: #fff !important; */
+height: 50px;
+box-shadow: 0 1px 0px 0 rgba(0, 0, 0, 0.1);
+}
+
+.postDetailsDark .postDetails__top {
+    box-shadow: 0 1px 0px 0 rgba(228, 222, 222, 0.1);
+    background-color: #242526;
+}
+
+.arrowBack {
+    color: gray;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.postDetailsDark .arrowBack {
+    color: rgb(226, 222, 222);
+}
+
+.postDetails__top h4 {
+    margin-left: 10px;
+    color: #292b2c !important;
+}
+
+.postDetailsDark .postDetails__top h4 {
+    color: #fff !important;
+}
+
+.postDetails__body {
+margin-top: 50px;
+}
+
+.isLoading {
+    position: relative;
+    display: flex ;
+    place-items: center ;
+    justify-content: center ;
+    align-items: center ;
+}
+
+.comments {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    flex-direction: column;
+}
+
+.comments__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.comments__top p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.comments__topLeft {
+    margin-left: 10px;
+}
+
+.comments__topRight {
+    margin-right: 10px;
+}
+
+.comments__topRight span{
+    display: flex;
+    font-size: 15px;
+    margin: 0 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.comment__footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    padding: 10px;
+   min-height:50px;
+   justify-content: center;
+    box-shadow: 0px 1px 3px -5px rgba(0, 0, 0, 0.3),
+    -1px -1px 2px -1px rgba(0, 0, 0, 0.2);
+}
+
+.postDetailsDark .comment__footer {
+    background-color: #242526;
+    color: #fff !important;
+    border-top: 1px solid rgb(27, 27, 27);
+    box-shadow: none;
+}
+
+.comment__formAvatar{
+    height: 38px !important;
+    width: 38px !important;
+}
+
+.comment__form {
+    display: flex;
+    align-items: center;
+    -webkit-box-align: center;
+}
+
+.comment__form form{
+    display: flex;
+    position: relative;
+    background-color: #f1f2f3;
+    border-radius: 20px;
+    flex: 0.95;
+    margin-left: 10px;
+    align-items: center;
+    /* padding: 11px; */
+
+}
+
+.postDetailsDark .comment__form form{
+    background-color: #313130;
+}
+
+.comment__textarea {
+    position: relative;
+    display: flex;
+    resize: none;
+    width: 100% !important;
+    overflow-y: scroll;
+    -moz-box-direction: normal;
+    max-height: 250px;
+    font-size: 16px;
+    background-color: #f1f2f3;
+    border: none;
+    height: 100%;
+    padding: 11px;
+    border-radius: 20px;
+    caret-color: rgb(29, 155, 240);
+    outline-width: 0;
+}
+
+.postDetailsDark .comment__textarea::placeholder {
+    color: rgb(185, 179, 179);
+    
+}
+
+.comment__textarea::placeholder {
+    color: rgb(87, 104, 112);
+}
+
+.comment__textarea:focus-visible {
+    outline-offset: 0px;
+    outline: none;
+  }
+  
+.postDetailsDark .comment__textarea {
+    background-color: #313130;
+    color: #fff;
+}
+
+.footerBotm{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.footerBotmLeft {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.footerCamera{
+    font-size: 26px;
+    margin-left: 5px;
+    color: rgb(87, 104, 112);
+}
+
+.postDetailsDark .footerCamera{
+    font-size: 26px;
+    margin-left: 5px;
+    color: #fff;
+}
+
+.button {
+    padding: 8px 16px;
+    background-color: #1fbb5d;
+    border-radius: 20px;
+    color: #fff;
+    border: none;
+    margin-right: 20px;
+}
+
+.focused {
+    transition: all 0.7s ease-in-out;
+    animation-duration: 10000ms;
+    overflow-y: hidden;
+
+	transition-property: all;
+	transition-duration: .5s;
+}
+
+.buttonDisable {
+    background-color: #244230;
+
+
+
+
+    /* overflow-y: scroll;
+    overscroll-behavior-y: none */
+}

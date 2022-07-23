@@ -54,6 +54,11 @@
     user-select: none !important;
 }
 
+.searchPage__form > input:focus-visible {
+    outline-offset: 0px;
+    outline: none;
+  }
+
 .searchPage__searchIcon{
     color: rgb(161, 161, 161);
 }

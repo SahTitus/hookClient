@@ -2,6 +2,7 @@ import React from "react";
 import { useStateContex } from "../../store/StateProvider";
 import style from "../../styles/ErrorToast.module.css";
 import Offline from '../../images/Offline.png'
+import { WifiOff } from "react-bootstrap-icons";
 
 function OfflineMsg({ error, online, offline }) {
   const { darkMode } = useStateContex();
@@ -11,7 +12,7 @@ function OfflineMsg({ error, online, offline }) {
 
      { offline && <div className={style.toastTop}>
         <div className={style.status}>
-          <img src={Offline} alt=''  />
+          <WifiOff  className={style.statusIcon}/>
         </div>
 
         <div className={style.toastInfo}>

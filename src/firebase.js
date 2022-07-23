@@ -16,9 +16,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-const logOut = () => {
-	signOut(auth)
-	console.log('Logout ✅')
-}
 
-export { auth, db, logOut };
+
+export { auth, db };

@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Go from "../../images/Go.png";
 import FbD from "../../images/FbD.png";
 import Gd from "../../images/Gd.png";
@@ -11,15 +11,22 @@ import { createUserWithEmailAndPassword, FacebookAuthProvider, signInWithPopup, 
 import { auth } from "../../firebase";
 import Input from "./Input";
 import { useStateContex } from "../../store/StateProvider";
+import { useDispatch } from "react-redux";
+import {
+	authData
+} from "../../redux/auth";
 
 const initialState = { email: "", password: "", confirmPassword: "" };
 
 function Auth() {
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState(initialState);
-  const { darkMode } = useStateContex();
-
   const [user, setUser] = useState(false);
+  const [formData, setFormData] = useState(initialState);
+
+  const { darkMode } = useStateContex();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -31,10 +38,13 @@ function Auth() {
 
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
-
+    const user = await signInWithPopup(auth, provider)
+    const token = user._tokenResponse.idToken
+    const result = user.user
     try {
-    const user  = await signInWithPopup(auth, provider)
+    dispatch(authData({data: { result, token}}))
       console.log(user)
+      navigate(-1);
     } catch (error) {
       console.log(error)
     }
@@ -42,15 +52,54 @@ function Auth() {
   };
 
   const signInWithFacebook = async () => {
-    try {
       const provider = new FacebookAuthProvider();
-     await signInWithPopup(auth, provider)
-      .then((result) => console.log(result))
+      const user = await signInWithPopup(auth, provider)
+      const token = user._tokenResponse.idToken
+      const result = user.user
+      try {
+      dispatch(authData({data: { result, token}}))
+        console.log(user)
+        navigate(-1);
+
     } catch (error) {
       console.log(error)
     }
     
   };
+
+  // const handleSignIn = (provider: AuthProvider) =>{
+  //   signInWithPopup(auth, provider).then((result) => {
+  //     repeatAuth();
+  //   }).catch((error) => {
+  //     console.log(error);
+  //     if (error.code === 'auth/account-exists-with-different-credential') {
+  //       let pendingCred = error.credential;
+  //       let email = error.customData.email;
+    
+  //       console.log(error.customData.email); // undefined
+  //       fetchSignInMethodsForEmail(auth, email).then( (methods) => {
+  //         console.log(methods);
+  //         if (methods[0] === 'password') {
+    
+  //           var password = promptUserForPassword(); // TODO: implement promptUserForPassword.
+    
+  //           signInWithEmailAndPassword(auth, email, password!).then((result) => {
+  //             return linkWithCredential(result.user, pendingCred);
+  //           }).then(() => {
+  //             repeatAuth();
+  //           });
+  //           return;
+  //         }
+  //         // TODO: implement getProviderForProviderId.
+  //         var provider = getProviderForProviderId(methods[0]);
+  //         signInWithPopup(auth, provider).then((result) => {
+  //           repeatAuth();
+  //         });
+  //       }).catch((error) => {
+  //         console.log(error);
+  //       });
+  //     }
+  //   });
 
   const signInWithEmailAndPassword = async (e) => {
     try {
@@ -72,7 +121,7 @@ function Auth() {
   };
 
   return (
-   <div className={`logi ${darkMode && "loginDark"}`}>
+   <div className={`login ${darkMode && "loginDark"}`}>
       <div className="login__top">
         <Link to="/">
           <img className="hookLogo" src={Hook} alt="" />
@@ -103,8 +152,7 @@ function Auth() {
          </>
          )}
           <Input
-
-            autoFocus={true}
+            // autoFocus={true}
             type="text"
             placeholder="Email"
             name="email"

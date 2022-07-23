@@ -3,6 +3,7 @@
     flex-direction: column;
     margin-top: 50px;
     user-select: none;
+    z-index: 100000000 !important;
 }
 
 .drawerDark .profile{
@@ -45,7 +46,7 @@
 }
 
 .drawerDark .username {
-    color: #21fc7a;
+    color: #1fbb5d;
 }
 
 .profile__info p{

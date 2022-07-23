@@ -1,0 +1,15 @@
+.image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .loading {
+    filter: blur(10px);
+    clip-path: inset(0);
+  }
+  
+  .loaded {
+    filter: blur(0px);
+    transition: filter 0.5s linear;
+  }

@@ -1,0 +1,11 @@
+.commentCard {
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+
+
+    user-select: none !important;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    -webkit-user-select:none !important;
+}

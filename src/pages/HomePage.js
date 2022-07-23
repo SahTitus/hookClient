@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "../styles/HomePage.css";
 // import QuestionCard from "./QuestionCard";
 // import { collection, query, onSnapshot } from "@firebase/firestore";
@@ -12,26 +12,21 @@ import Appbar from "../components/Appbar";
 import CreatePost from "../components/Post/forms/CreatePost";
 import PostCard from "../components/Post/PostCard";
 import { useStateContex } from "../store/StateProvider";
-import SkeLoadash from "../components/SkeLoadash";
+import SkeLoadash from "../components/loadash/Skeleton";
 import ErrorMsg from "../components/connectivity/ErrorMsg";
+import axios from "axios";
+import Hook from "../images/Hook.jpg"
+import Spinner from "../components/loadash/Spinner";
 // import Upload from "../utils/UploadImage";
 
 function Homepage({ posts, isLoading, error }) {
-  // const [user, setUser] = useState(null);
-
   // const dd = window.matchMedia('(prefers-color-scheme: light)').matches
   // console.log(dd)
 
   const { darkMode } = useStateContex();
-
-  if (!posts) return null;
-
-  // useEffect(() => {
-  // 	onAuthStateChanged(auth, (user) => {
-  // 		if (user) setUser(user);
-  // 		else setUser(null);
-  // 	});
-  // }, []);
+  const user = JSON.parse(localStorage.getItem('profile'))?.data
+  // if (!posts) return null;
+  // if (!user) 
 
   return (
     <div className={`homepage ${isLoading && 'overflowHidden'} ${darkMode && "homepage__dark"}`}>
@@ -40,10 +35,13 @@ function Homepage({ posts, isLoading, error }) {
       <div className="createPost">{!isLoading && <CreatePost />}</div>
       {/* <Upload /> */}
       <div className={`homepage__feed `}>
+      
+       
       {/* { (!isLoading && error ) &&  <ErrorMsg error={error} />} */}
         {isLoading ? (
           // <div className='loadash'>{<Spin className="spin"/>}</div>
           <div className='loadash'>
+            
             <SkeLoadash />
             <SkeLoadash />
             <SkeLoadash />
@@ -51,14 +49,18 @@ function Homepage({ posts, isLoading, error }) {
             <SkeLoadash />
           </div>
         ) : (
+          
           posts.map((post) => (
             <PostCard
               key={post._id}
               id={post._id}
-              image={post?.image}
+              image={post?.imageData}
               link={post.link}
               text={post?.text}
-              username="React Lee"
+              username={post.username}
+              creatorName={post?.username}
+              creatorImage={post?.userImage}
+              userId={post.userId}
               likes={0}
               dislikes={0}
               group="Tanhans"
@@ -67,9 +69,27 @@ function Homepage({ posts, isLoading, error }) {
               noOfShares={0}
               description={post.description}
               reposted={post.repost}
+              linkData={post?.linkData}
             />
           ))
         )}
+
+{/* <PostCard
+
+              image={Hook}
+              link=''
+              text=''
+              username='Samuel'
+              userId='9'
+              likes={0}
+              dislikes={0}
+              group="Tanhans"
+              timestamp='2d'
+              noOfComments={0}
+              noOfShares={0}
+              description='lllll'
+
+            /> */}
 
         {/*
         <QuestionCard
@@ -85,7 +105,7 @@ function Homepage({ posts, isLoading, error }) {
           image={Food}
         /> */}
       </div>
-      <AdFab />
+      <AdFab user={user}/>
       <BottomNavigation />
     </div>
   );

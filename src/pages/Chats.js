@@ -24,7 +24,7 @@ function Chats() {
           <Chat1
             image={Health}
             username="PEHJOS"
-            message="send me the hacks"
+            message="send me the hacks gh   vdsvsdvdv c d9dvd9 dv dv9dvhv hff rufhr7r rvrvrvrv vrvribb b9rr brb9rubrb  vdvhdivh vvdv vdvdv vdv9dvudv v wefof ff fefhr"
             timestamp="8:00 pm"
           />
           <Chat1

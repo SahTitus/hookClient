@@ -1,0 +1,121 @@
+.skeleDark {
+  background-color: #292828 !important;
+}
+
+.skeleDarkAnimat {
+  background-color: rgb(151, 155, 158) !important;
+}
+
+@keyframes spin {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.spin div {
+  left: 48px;
+  top: 34.5px;
+  position: absolute;
+  animation: spin linear 1s infinite;
+  background: #292828;
+  width: 4px;
+  height: 11px;
+  border-radius: 2px / 3.74px;
+  transform-origin: 2px 15.5px;
+}
+.spin div:nth-child(1) {
+  transform: rotate(0deg);
+  animation-delay: -0.9s;
+  background: #292828;
+}
+.spin div:nth-child(2) {
+  transform: rotate(36deg);
+  animation-delay: -0.8s;
+  background: #292828;
+}
+.spin div:nth-child(3) {
+  transform: rotate(72deg);
+  animation-delay: -0.7s;
+  background: #292828;
+}
+.spin div:nth-child(4) {
+  transform: rotate(108deg);
+  animation-delay: -0.6s;
+  background: #292828;
+}
+.spin div:nth-child(5) {
+  transform: rotate(144deg);
+  animation-delay: -0.5s;
+  background: #292828;
+}
+.spin div:nth-child(6) {
+  transform: rotate(180deg);
+  animation-delay: -0.4s;
+  background: #292828;
+}
+.spin div:nth-child(7) {
+  transform: rotate(216deg);
+  animation-delay: -0.3s;
+  background: #292828;
+}
+.spin div:nth-child(8) {
+  transform: rotate(252deg);
+  animation-delay: -0.2s;
+  background: #292828;
+}
+.spin div:nth-child(9) {
+  transform: rotate(288deg);
+  animation-delay: -0.1s;
+  background: #292828;
+}
+.spin div:nth-child(10) {
+  transform: rotate(324deg);
+  animation-delay: 0s;
+  background: #292828;
+}
+.spin {
+  width: 100px;
+  position: relative;
+  transform: translateZ(0) scale(0.72);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.spin div {
+  box-sizing: content-box;
+}
+
+.spinDark.spin div {
+  background: #fff;
+}
+.spinDark.spin div:nth-child(1) {
+  background: #fff;
+}
+.spinDark.spin div:nth-child(2) {
+  background: #fff;
+}
+.spinDark.spin div:nth-child(3) {
+  background: #fff;
+}
+.spinDark.spin div:nth-child(4) {
+  background: #fff;
+}
+.spinDark.spin div:nth-child(5) {
+  background: #fff;
+}
+.spinDark.spin div:nth-child(6) {
+  background: #fff;
+}
+.spinDark.spin div:nth-child(7) {
+  background: #fff;
+}
+.spinDark.spin div:nth-child(8) {
+  background: #fff;
+}
+.spinDark.spin div:nth-child(9) {
+  background: #fff;
+}
+.spinDark.spin div:nth-child(10) {
+  background: #fff;
+}

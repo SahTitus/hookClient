@@ -1,6 +1,6 @@
-import { faCommentDots } from "@fortawesome/free-regular-svg-icons";
-import { faShare } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faCommentDots } from "@fortawesome/free-regular-svg-icons";
+// import { faShare } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Add, ArrowBack, Edit } from "@mui/icons-material";
 import React, { useState } from "react";
 import "../styles/Profile.css";
@@ -69,7 +69,7 @@ function Profile() {
 							Edit Profile
 						</button>
 						<button>
-							<FontAwesomeIcon className="profile__cardButton" icon={faShare} />
+							{/* <FontAwesomeIcon className="profile__cardButton" icon={faShare} /> */}
 							Share
 						</button>
 					</div>
@@ -80,10 +80,10 @@ function Profile() {
 							Follow
 						</button>
 						<button>
-							<FontAwesomeIcon
+							{/* <FontAwesomeIcon */}
 								className="profile__cardButton"
-								icon={faCommentDots}
-							/>
+								{/* icon={faCommentDots} */}
+							{/* /> */}
 							Chat
 						</button>
 						{/* <button>

@@ -15,13 +15,13 @@ function Reactions({ selectReaction }) {
   console.log(items);
   return (
     <div className={style.reactions}>
-      {items.map((item) => (
-        <di>
+      {items.map((item, i) => (
+        <div key={i}>
           <span className={style.emojiLabel}>{item.id}</span>
           <button onClick={() => selectReaction(item)} className={style.emoji}>
             {item.label}
           </button>
-        </di>
+        </div>
       ))}
     </div>
   );

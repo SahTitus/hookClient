@@ -3,8 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
 	isLoading: false,
 	posts: [],
+	post: {},
 	error: [],
-	image: null,
+	link: {},
+
 };
 
 export const postsSlice = createSlice({
@@ -15,12 +17,19 @@ export const postsSlice = createSlice({
 			state.posts = action.payload;
 			state.isLoading = false;
 		},
+		fetchPostSuccess: (state, action) => {
+			state.post = action.payload;
+			state.isLoading = false;
+		},
 		fetchPostsIsloading: (state) => {
 			state.isLoading = true;
 		},
 		fetchPostsError: (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
+		},
+		detectLink: (state, action) => {
+			state.link =  action.payload;
 		},
 		addPost: (state, action) => {
 			state.posts = [...state.posts, action.payload];
@@ -31,9 +40,12 @@ export const postsSlice = createSlice({
 		update: (state, action) => {
 			state.posts = state.posts.filter((post) => post._id === action.payload._id ? action.payload : post );
 		},
-		choseImg: (state, action) => {
-			state.image = action.image
-			console.log(state.image)
+		comment: (state, action) => {
+		 state.posts = [...state.posts,  {posts: state.posts.map((post) => {
+			if (post._id === action.payload._id) return action.payload;
+			return post;
+
+		 } )}]
 		}
 	},
 });
@@ -42,8 +54,10 @@ export const {
 	fetchPostsError,
 	fetchPostsIsloading,
 	fetchPostsSuccess,
+	fetchPostSuccess,
 	addPost,
 	deletePost,
 	update,
+	detectLink,
 } = postsSlice.actions;
 export default postsSlice.reducer;

@@ -1,8 +1,13 @@
-import { Badge, IconButton, Dialog } from "@mui/material";
+import { Badge, IconButton, Dialog, Avatar } from "@mui/material";
 import "../styles/Appbar.css";
 import { Link } from "react-router-dom";
 import Hook from "../images/Hook.jpg";
-import { AccountCircleOutlined, Close, AccountCircle, NotificationsOutlined } from "@mui/icons-material";
+import {
+  AccountCircleOutlined,
+  Close,
+  AccountCircle,
+  NotificationsOutlined,
+} from "@mui/icons-material";
 import { transition } from "../utils/transition";
 import useToggle from "../utils/useToggle";
 import Drawer from "./Drawer";
@@ -12,6 +17,9 @@ import { useStateContex } from "../store/StateProvider";
 function Appbar() {
   const { value, toggleValue } = useToggle(false);
   const { darkMode } = useStateContex();
+
+  const user = JSON.parse(localStorage.getItem('profile'))?.data;
+  // console.log(user)
 
   return (
     <div className="appbar">
@@ -24,33 +32,36 @@ function Appbar() {
             </Link>
           </div>
         </div>
-        <div className="appbar__headerRight">
-          <IconButton id="appbar__headerRightBtn">
-            <Badge badgeContent={0} color="secondary">
-              <NotificationsOutlined
-                className={`appbar__headerRightIcon ${
-                  darkMode && "headerRightIconDark"
-                }`}
-              />
-            </Badge>
-          </IconButton>
 
-          <IconButton id="appbar__headerRightBtn" onClick={toggleValue}>
-            {darkMode ? (
-              <AccountCircle
-                className={`appbar__headerRightIcon ${
-                  darkMode && "headerRightIconDark"
-                }`}
-              />
-            ) : (
-              <AccountCircleOutlined
-                className={`appbar__headerRightIcon ${
-                  darkMode && "headerRightIconDark"
-                }`}
-              />
-            )}
-          </IconButton>
-        </div>
+        {!user ? (
+          <Link to='/auth'>
+          <div className="authButton">
+            <p>Sign in</p>
+          </div>
+          </Link>
+        ) : (
+          <div className="appbar__headerRight">
+            <IconButton id="appbar__headerRightBtn">
+              <Badge badgeContent={0} color="secondary">
+                <NotificationsOutlined
+                  className={`appbar__headerRightIcon ${
+                    darkMode && "headerRightIconDark"
+                  }`}
+                />
+              </Badge>
+            </IconButton>
+            <IconButton id="appbar__headerRightBtn" onClick={toggleValue}>
+                <Avatar
+                src={user.result?.photoURL}
+                  className={`appbar__avatar ${
+                    darkMode && "headerRightIconDark"
+                  }`}
+                >
+                  {user.result?.displayName.charAt(0)}
+                </Avatar>
+            </IconButton>
+          </div>
+        )}
       </div>
 
       <Dialog
@@ -70,7 +81,9 @@ function Appbar() {
                 style={{ marginRight: "5px" }}
                 onClick={toggleValue}
               >
-                <Close className={`drawerClose ${ darkMode && "drawerCloseDark"}` } />
+                <Close
+                  className={`drawerClose ${darkMode && "drawerCloseDark"}`}
+                />
               </IconButton>
             </div>
 
@@ -79,7 +92,7 @@ function Appbar() {
             </p>
           </div>
 
-          <Drawer />
+          <Drawer user={user} closeDrawer={toggleValue}/>
         </div>
       </Dialog>
     </div>

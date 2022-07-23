@@ -7,13 +7,27 @@ import {
 } from "@mui/icons-material";
 import React from "react";
 import style from "../styles/Drawer.module.css";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { useStateContex } from "../store/StateProvider";
-import { logOut } from "../firebase";
+import { useDispatch } from "react-redux";
+import {
+	logout
+} from "../redux/auth";
 // import ToggleMode from "./ToggleMode"
 
-function Drawer() {
+function Drawer({ closeDrawer}) {
   const { darkMode } = useStateContex();
+  const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  // const user=useState(JSON.parse(localStorage.getItem("profile")))
+
+  const logOut = () => {
+    dispatch(logout())
+    window.location.reload(true)
+    closeDrawer()
+    // navigate('/')
+  }
+
   return (
     <div className={`${style.drawer} ${darkMode && style.drawerDark}`}>
       <Link to="/profile">
@@ -48,7 +62,7 @@ function Drawer() {
         </div>
         <hr className={style.drawer__divider} />
       </div>
-      <p onClick={logOut}>LogOut</p>
+      <p style={{ bgcolor: 'red'}} onClick={logOut}>LogOut</p>
     </div>
   );
 }

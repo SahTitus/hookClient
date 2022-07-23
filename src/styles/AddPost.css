@@ -1,343 +1,339 @@
-#appPost__whoSeeFormCtrl{
-    background-color: rgb(255, 255, 255);
-    max-width: 100px !important;
-    justify-content: center;
+#appPost__whoSeeFormCtrl {
+  background-color: rgb(255, 255, 255);
+  max-width: 100px !important;
+  justify-content: center;
 }
 
-#addPost__optionBtnIcon{
-    background-color: #21fc7a ;
-    transition: 1000ms ;
+#addPost__optionBtnIcon {
+  background-color: #1fbb5d;
+  transition: 1000ms;
+}
+/* 
+#textField-Mui-focused {
+  border: 1px solid red !important;
+} */
+
+.addPost__optionIcon {
+  color: white;
 }
 
-
-#textField-Mui-focused{
-    border: 1px solid red !important;
+.addPostDark .btnIcon {
+  color: #fff !important;
 }
 
-.addPost__optionIcon{
-    color: white ;
-}
-
-.addPostDark .btnIcon{
-    color: #fff !important;
-}
-
-.addPost__optionText{
-    color: #21fc7a !important;
+.addPost__optionText {
+  color: #1fbb5d !important;
 }
 
 /* #appPost__select{} */
 
 .addPost {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    background-color: rgb(255, 255, 255);
-    height: 100%;
-    overflow-y: scroll;
-    margin-bottom: 50px;
-    justify-content: space-between;
-    
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: rgb(255, 255, 255);
+  height: 100%;
+  overflow-y: scroll;
+  margin-bottom: 50px;
+  justify-content: space-between;
 }
 
-.addPostDark{
-    background-color: #242526;
+.addPostDark {
+  background-color: #242526;
 }
 
-.addPost__header{
-    position: fixed;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0px 5px 2px -5px rgba(0, 0, 0, 0.4) !important;
-    background-color: white !important;
-    height: 60px;
-    width: 100%;
-    z-index: 10;
+.addPost__header {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 5px 2px -5px rgba(0, 0, 0, 0.4) !important;
+  background-color: white !important;
+  height: 60px;
+  width: 100%;
+  z-index: 10;
 }
 
 .addPostDark .addPost__header {
-    background-color: #242526 !important;
+  background-color: #242526 !important;
 }
 
-.addPost__headerIcon{
-    color: rgb(78, 78, 78);
-    margin-left: 10px;
-    cursor: pointer;
+.addPost__headerIcon {
+  color: rgb(78, 78, 78);
+  margin-left: 10px;
+  cursor: pointer;
 }
 
 .addPostDark .addPost__headerIcon {
-    color: #dbdee0;
+  color: #dbdee0;
 }
 
 .addPost__header button {
-    padding: 4px 15px;
-    font-size: 18px;
-    border-radius: 20px;
-    border-color: #21fc7a;
-    background-color: #21fc7a;
-    color: white;
-    cursor: pointer;
-    margin-right: 10px;
+  padding: 4px 15px;
+  font-size: 18px;
+  border-radius: 20px;
+  border-color: #1fbb5d;
+  background-color: #1fbb5d;
+  color: white;
+  cursor: pointer;
+  margin-right: 10px;
 }
 
-.disablePost{
-    border-color: #aff8cc !important;
-    background-color: #c6f8da !important;
+.disablePost {
+  border-color: #aff8cc !important;
+  background-color: #c6f8da !important;
 }
 
-.addPost__top{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin-top: 70px;
+.addPost__top {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 70px;
 }
 
-.addPost__avatar{
-    margin-left: 10px;
+.addPost__avatar {
+  margin-left: 10px;
 }
 
-.select__hallTop{
-    position: fixed;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0px 5px 3px -5px rgba(0, 0, 0, 0.2) !important;
-    background-color: white ;
-    height: 60px;
-    width: 100%;
-    z-index: 10;
+.select__hallTop {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 5px 3px -5px rgba(0, 0, 0, 0.2) !important;
+  background-color: white;
+  height: 60px;
+  width: 100%;
+  z-index: 10;
 }
 
-.select__hallSearch{
-    background: transparent;
-    display: flex;
-    flex: 1;
-    padding: 10px;
-    height: 40px;
+.select__hallSearch {
+  background: transparent;
+  display: flex;
+  flex: 1;
+  padding: 10px;
+  height: 40px;
 }
 
-.select__hallSearchContainer{
-    width: 100%;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    padding: 10px 10px;
-    border-radius: 20px;
-    box-shadow: 1px 1px 3px 2px #dbdee0;
+.select__hallSearchContainer {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px 10px;
+  border-radius: 20px;
+  box-shadow: 1px 1px 3px 2px #dbdee0;
 }
 
-.select__hallSearchContainer>input {
-    width: 100%;
-    border: none;
-    outline-width: 0;
-    font-size: 16px;
-    margin-left: 5px;
+.select__hallSearchContainer > input {
+  width: 100%;
+  border: none;
+  outline-width: 0;
+  font-size: 16px;
+  margin-left: 5px;
 }
 
 .select__hallSearchIcon {
-    color: gray;
-    cursor: pointer;
+  color: gray;
+  cursor: pointer;
 }
 
-.select__hallList{
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
+.select__hallList {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
 }
 
-.textFields{
-    display: flex;
-    flex-direction: column;
- 
-    flex: 1;
-    color: #21fc7a;
+.textFields {
+  display: flex;
+  flex-direction: column;
 
+  flex: 1;
+  color: #1fbb5d;
 }
 
-.textField{
-    display: flex;
-    justify-content: center;
+.textField {
+  display: flex;
+  justify-content: center;
 }
 
-.textArea{
-    resize: none;
-    width: 95% !important;
-    min-height: 50px;
-    font-size: 16px;
-    border: none;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    /* margin: 20px; */
+.textArea {
+  resize: none;
+  width: 95% !important;
+  min-height: 50px;
+  font-size: 16px;
+  border: none;
+  outline-width: 0;
+  /* font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; */
+  /* margin: 20px; */
 }
 
-.addPostDark .textArea{
-    background-color: #242526;
-    color: white;
+.addPostDark .textArea {
+  background-color: #242526;
+  color: white;
 }
 
-.textArea::placeholder{
-    font-family: 'Times New Roman', Times, serif;
+/* .textArea::placeholder {
+  font-family: "Times New Roman", Times, serif;
+} */
+
+.addPostDark .textArea::placeholder {
+  color: #dbdee0;
 }
 
-.addPostDark .textArea::placeholder{
-    color: #dbdee0;
-}
-
-
-.textArea:focus-visible{
+.textArea:focus-visible {
   outline-offset: 0px;
   outline: none;
 }
 
-.addPost__bottom{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 100%;
-    min-height: 100px;
-    position:fixed;
-    bottom: 0;
-    background-color: #ffffff;
-    box-shadow: 0px 5px 30px -5px rgba(0, 0, 0, 0.3),
-		-1px -1px 2px -1px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgb(255, 255, 255);
-    border-top-left-radius: 20px ;
-    border-top-right-radius: 20px ;
+.addPost__bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+  min-height: 100px;
+  position: fixed;
+  bottom: 0;
+  background-color: #ffffff;
+  box-shadow: 0px 5px 30px -5px rgba(0, 0, 0, 0.3),
+    -1px -1px 2px -1px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgb(255, 255, 255);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
-.addPostDark .addPost__bottom{
-    background-color: #242526 ;
-    color: #ffffff ;
-    border: 1px solid rgb(70, 68, 68) ;
+.addPostDark .addPost__bottom {
+  background-color: #242526;
+  color: #ffffff;
+  border: 1px solid rgb(70, 68, 68);
 }
 
 .addPost__bottomExpand {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 40px;
-    position:fixed;
-    bottom: 0;
-    color: rgb(97, 96, 96) ;
-    background-color: #fff ;
-    box-shadow: 0px 5px 30px -5px rgba(0, 0, 0, 0.3),
-		-1px -1px 2px -1px rgba(0, 0, 0, 0.2) ;
-    border: 1px solid rgb(255, 255, 255) ;
-    border-top-left-radius: 20px ;
-    border-top-right-radius: 20px ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+  color: rgb(97, 96, 96);
+  background-color: #fff;
+  box-shadow: 0px 5px 30px -5px rgba(0, 0, 0, 0.3),
+    -1px -1px 2px -1px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgb(255, 255, 255);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 .addPostDark .addPost__bottomExpand {
-    background-color: #242526 ;
-    color: #ffffff ;
-    border: 1px solid rgb(70, 68, 68) ;
+  background-color: #242526;
+  color: #ffffff;
+  border: 1px solid rgb(70, 68, 68);
 }
 
-.addPost__bottom p{
-    text-align: center;
-    font-weight: 550;
-    font-size: small;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+.addPost__bottom p {
+  text-align: center;
+  font-weight: 550;
+  font-size: small;
 }
 
-.addPostDark .addPost__bottom p{
-    color: #ffffff ;
+.addPostDark .addPost__bottom p {
+  color: #ffffff;
 }
 
-.addPost__bottomChild{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.addPost__bottomChild {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.addPost__option{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
+.addPost__option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
 }
 
-
-.addPost__option p{
-    font-size: small;
-    color: rgb(77, 75, 75);
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+.addPost__option p {
+  font-size: small;
+  color: rgb(77, 75, 75);
 }
 
 .addPostDark .imgPreview {
-    background-color: #242526;
+  background-color: #242526;
 }
 
-.imgPreview{
-    display: flex;
-    place-items: center;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100%;
-    z-index: 100;
-    top: 0;
-    position: absolute;
-    background-color: #fff;
+.imgPreview {
+  display: flex;
+  place-items: center;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  z-index: 100;
+  top: 0;
+  position: absolute;
+  background-color: #fff;
 }
 
 .prevChild {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;
-    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2);
-    background-color: #ececec;
-    border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2);
+  background-color: #ececec;
+  border-radius: 10px;
 }
 
-.prevChild__top{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+.prevChild__top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .addPostDark .prevChild {
-    background-color: #242526;
-    box-shadow: 0px 0px 4px 1px rgba(185, 184, 184, 0.2);
+  background-color: #242526;
+  box-shadow: 0px 0px 4px 1px rgba(185, 184, 184, 0.2);
 }
 
-.prevChild__top button{
-    cursor: pointer;
-    margin: 15px 15px 20px 10px;
-    height: 35px;
-    width: 100px;
-    border-radius: 20px;
-    border-color: #aff8cc;
-    background-color: #21fc7a;
-    font-size: 17px;
-    color: rgb(32, 32, 32);
-   font-family: sans-serif;
-   color: #fff;
+.prevButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 15px 15px 20px 10px;
+  height: 30px;
+  width: 90px;
+  border-radius: 30px;
+  border-color: #aff8cc;
+  background-color: #1fbb5d;
+  font-size: 17px;
+  color: rgb(32, 32, 32);
+  font-family: sans-serif;
+  color: #fff;
 }
 
-.prevChild__topIcon{
-    margin: 15px 15px 20px 10px;
+.prevChild__topIcon {
+  margin: 15px 15px 20px 10px;
   color: #515253;
   cursor: pointer;
 }
 
-.addPostDark .prevChild__topIcon{
-    color: #fff;
+.addPostDark .prevChild__topIcon {
+  color: #fff;
 }
 
-.imgPreview img{
-height: 420px;
-
-width: 100%;
-object-fit: fill;
+.imgPreview img {
+  height: 420px;
+  width: 100%;
+  object-fit: fill;
 }
 
 /* .createPost{

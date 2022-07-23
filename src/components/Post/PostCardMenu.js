@@ -16,6 +16,7 @@ function PostCardMenu({id}) {
         </ListItemIcon>
         <ListItemText>Hide post</ListItemText>
       </ListItem>
+      
 
       <ListItem button style={{color: darkMode ? 'white' : ''}}>
         <ListItemIcon style={{color: darkMode ? '#fff' : ''}}>

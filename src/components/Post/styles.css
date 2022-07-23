@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  .App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  .container {
+    display: flex;
+  }
+  
+  .span {
+    font-size: 14px;
+    max-height: 18px;
+    line-height: 1.43;
+    overflow: hidden;
+    letter-spacing: normal;
+    transition: all 0.3s ease-out;
+    width: 100%;
+  }
+  
+  .show {
+    max-height: 50vh;
+    opacity: 1;
+    transition: all 0.3s ease-in;
+  }
+  
+  .image {
+    width: 2em;
+    height: 2em;
+    padding: 0px 10px;
+    transform: scale(2.4);
+    cursor: pointer;
+  }
+  

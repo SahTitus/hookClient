@@ -83,6 +83,8 @@ function PostDetails() {
         </div>
       </div>
 
+
+
       <div className={`${style.comment__footer} ${focused && style.focused}`}>
         <div className={`${style.comment__form}`}>
           <Avatar
@@ -94,6 +96,7 @@ function PostDetails() {
               className={style.comment__textarea}
               placeholder="Leave a comment here..."
               name={comment}
+              maxRows={14}
               type="text"
               onChange={handleChange}
               onFocus={(e) => setFocused(true)}
@@ -103,7 +106,7 @@ function PostDetails() {
           </form>
         </div>
 
-        {focused && (
+        {(focused || !!comment.length > 0) && (
           <div className={`${style.footerBotm} `}>
             <div className={style.footerBotmLeft}>
               <Camera className={style.footerCamera} />

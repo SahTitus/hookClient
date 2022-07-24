@@ -63,14 +63,6 @@ function Drawer({ closeDrawer}) {
         <hr className={style.drawer__divider} />
       </div>
       <p style={{ bgcolor: 'red'}} onClick={logOut}>LogOut</p>
-      <textarea style={{height: '100px', width: "200px"}}/>
-  
-              placeholder="Leave a comment here..."
-
-              type="text"
-
-              multiline="multiline"
-            />
     </div>
   );
 }

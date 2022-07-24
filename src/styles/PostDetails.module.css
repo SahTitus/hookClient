@@ -91,16 +91,6 @@ margin-top: 50px;
     margin: 0 5px;
 }
 
-
-
-
-
-
-
-
-
-
-
 .comment__footer {
     position: fixed;
     bottom: 0;
@@ -158,7 +148,6 @@ margin-top: 50px;
     width: 100% !important;
     overflow-y: scroll;
     -moz-box-direction: normal;
-    max-height: 250px;
     font-size: 16px;
     background-color: #f1f2f3;
     border: none;
@@ -232,10 +221,6 @@ margin-top: 50px;
 
 .buttonDisable {
     background-color: #244230;
-
-
-
-
     /* overflow-y: scroll;
     overscroll-behavior-y: none */
 }

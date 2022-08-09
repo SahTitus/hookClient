@@ -40,7 +40,7 @@ import Resizer from "react-image-file-resizer";
 //       width: 250,
 //     },
 //   },
-// };
+// }
 
 const initialState = {
   text: "",

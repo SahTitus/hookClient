@@ -10,15 +10,26 @@ import { useStateContex } from "../store/StateProvider";
 import SkeLoadash from "../components/loadash/Skeleton";
 import ErrorMsg from "../components/connectivity/ErrorMsg";
 import Spinner from "../components/loadash/Spinner";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchPosts } from "../actions/posts";
 
-function Homepage({ posts, isLoading, error }) {
+
+function Homepage() {
   // const dd = window.matchMedia('(prefers-color-scheme: light)').matches
   // console.log(dd)
+  const dispatch = useDispatch();
+
+  const { posts, isLoading, error} = useSelector((state) => state.posts);
+  const feeds = posts.slice().sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+
+  console.log(posts)
+
+  useEffect(() => {
+    dispatch(fetchPosts());
+  }, []);
 
   const { darkMode } = useStateContex();
   const user = JSON.parse(localStorage.getItem('profile'))
-  // if (!posts) return null;
-  // if (!user) 
 
   return (
     <div className={`homepage ${isLoading && 'overflowHidden'} ${darkMode && "homepage__dark"}`}>
@@ -42,7 +53,7 @@ function Homepage({ posts, isLoading, error }) {
           </div>
         ) : (
           
-          posts.map((post) => (
+          feeds.map((post) => (
             <PostCard
               key={post._id}
               id={post._id}

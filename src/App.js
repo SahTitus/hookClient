@@ -39,7 +39,7 @@ function App() {
               {/* <Route path="/createGroup" element={<CreateGroup />} /> */}
               <Route path="/profile" element={<Profile />} />
               {/* <Route path="/PostForm" element={<PostForm />} /> */}
-              <Route path="/addPost" element={<AddPost setRefresh={setRefresh} />} />
+              <Route path="/addPost" element={<AddPost />} />
               <Route path="/chatRoom" element={<ChatRoom />} />
               {/* <Route path="/myhalls" element={<Myhalls />} /> */}
               {/* <Route path="/explore" element={<Explore />} /> */}
@@ -50,9 +50,6 @@ function App() {
               <Route path="/"
                element={
                <HomeFeed
-                posts ={feeds} 
-                error={error}
-                isLoading={isLoading}
                 />
               } 
                />
@@ -60,7 +57,7 @@ function App() {
           </div>
           {/* <BottomNavigation />			 */}
          
-         {(!online && !isLoading) && 
+         {(!online ) && 
          <div className='errorM'><OfflineMsg offline={!online} /></div>
          }
         </BrowserRouter>

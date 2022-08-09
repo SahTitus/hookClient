@@ -2,7 +2,6 @@
 import {
   AutorenewOutlined,
   Circle,
-  IosShareOutlined,
   MoreHoriz,
   Public,
 } from "@mui/icons-material";
@@ -16,15 +15,23 @@ import {
 import React, { useCallback, useEffect, useState } from "react";
 import style from "../../styles/PostCard.module.css";
 import Reactions from "../Reactions";
-import useToggle from "../../utils/useToggle";
+// import useToggle from "../../utils/useToggle"; 
 import PostCardMenu from "./PostCardMenu";
 import { useStateContex } from "../../store/StateProvider";
-import { createPost } from "../../actions/posts";
+import { createPost, likePost } from "../../actions/posts";
 import { useDispatch } from "react-redux";
 import { parseISO, formatDistanceToNowStrict } from "date-fns";
-import { Chat, BoxArrowUp, ArrowRepeat, Heart, HeartFill, Link45deg } from "react-bootstrap-icons";
+import {
+  Chat,
+  BoxArrowUp,
+  ArrowRepeat,
+  Heart,
+  HeartFill,
+  Link45deg,
+} from "react-bootstrap-icons";
 import ProgressiveImg from "../ProgressiveImg";
 import { Link, useNavigate } from "react-router-dom";
+import useLongPress from "../../utils/useLongPress";
 
 function PostCard({
   id,
@@ -39,23 +46,37 @@ function PostCard({
   hallName,
   linkData,
   likes,
-  dislikes,
   image,
-  onto,
   timestamp,
   question,
   reposted,
 }) {
   const [liked, setLiked] = useState(false);
   // showReactions
-  const { value, toggleValue } = useToggle(false);
+  const [ showReactions, setShowReactions ] = useState(false);
   const [reactions, setReactions] = useState([]);
   const dispatch = useDispatch();
   // const [showIcon, setIconShow] = useState(true);
   const navigate = useNavigate();
   const [open, setOpen] = useState(true);
-  const user = JSON.parse(localStorage.getItem("profile"))?.data;
+  const user = JSON.parse(localStorage.getItem("profile"))
   const hideReadmore = window.location.href.includes(`${id}`);
+
+  const onLongPress = () => {
+    console.log("longpress is triggered");
+    setShowReactions(true);
+  };
+
+  const onClick = () => {
+    console.log("click is triggered");
+    dispatch(likePost(id))
+  };
+
+  const defaultOptions = {
+    shouldPreventDefault: true,
+    delay: 500,
+  };
+  const longPressEvent = useLongPress(onLongPress, onClick, defaultOptions);
 
   const handleClick = (e) => {
     if (!hideReadmore) setOpen(!open);
@@ -70,7 +91,7 @@ function PostCard({
   }, []);
 
   const toggleShowReactions = () => {
-    toggleValue();
+
     setLiked(!liked);
   };
 
@@ -124,9 +145,39 @@ function PostCard({
   };
 
   const openPost = () => {
-    navigate(`/postDetails/${id}`)
+    navigate(`/postDetails/${id}`);
   };
 
+ const Like = () => {
+  
+if (likes.length > 0)  { return likes.find((like )=> like === (user?.result?.uid || user?.result?._id)) ?
+  (
+    <>
+    <Heart
+      className={`${style.bottomIcons} ${style.bottomLikeIcon} ${
+        darkMode && style.bottomIconsDark
+      }`}
+    />
+    </>
+  ) : (
+    <>
+    <HeartFill
+      onClick={() => setLiked(!liked)}
+      className={style.likeFill}
+    />
+    </>
+
+  )
+  }
+return <>
+<Heart
+  className={`${style.bottomIcons} ${style.bottomLikeIcon} ${
+    darkMode && style.bottomIconsDark
+  }`}
+/>
+</>
+  }
+  
   const handleSubmit = async (e) => {
     // e.preventDefault();
     dispatch(
@@ -194,7 +245,7 @@ function PostCard({
       )}
       <div onClick={openPost} className={style.top}>
         <div className={style.topLeft}>
-          <Link to="/profile">
+          <Link to="/profile" >
             <Avatar src={user?.result?.photoURL} className={style.avatar} />
           </Link>
 
@@ -203,14 +254,14 @@ function PostCard({
             <p className={style.creatorName}>{creatorName}</p>
             {/* </Link> */}
             <span>
-              { timestamp && formatDistanceToNowStrict(parseISO(timestamp)) }
+              {timestamp && formatDistanceToNowStrict(parseISO(timestamp))}
               <Circle className={style.dot} />{" "}
               <Public className={style.globe} />{" "}
               {!!reactions.length && (
                 <>
                   <Circle className={style.dot} />{" "}
-                  {reactions.slice(0, 5).map((reaction) => (
-                    <span className={style.reaction}>{reaction.label}</span>
+                  {reactions.slice(0, 5).map((reaction, i) => (
+                    <span key={i} className={style.reaction}>{reaction.label}</span>
                   ))}
                 </>
               )}
@@ -290,12 +341,12 @@ function PostCard({
       </div>
 
       <div className={style.bottom}>
-        {value && (
-          <ClickAwayListener onClickAway={(event) => toggleValue()}>
-            <p>
+        {showReactions && (
+          <ClickAwayListener onClickAway={(event) => setShowReactions(false)}>
+            <div onClick={() => setShowReactions(false)}>
               {" "}
               <Reactions selectReaction={selectReaction} />
-            </p>
+            </div>
           </ClickAwayListener>
         )}
         {/* <div className={style.bottomCounts}>
@@ -318,20 +369,10 @@ function PostCard({
           </p>
         </div> */}
         <div className={style.bottomOptions}>
-          <div className={style.bottomOption} onClick={toggleShowReactions}>
-            {!liked ? (
-              <Heart
-                className={`${style.bottomIcons} ${style.bottomLikeIcon} ${
-                  darkMode && style.bottomIconsDark
-                }`}
-              />
-            ) : (
-              <HeartFill
-                onClick={() => setLiked(!liked)}
-                className={style.likeFill}
-              />
-            )}
-            <p>8</p>
+          <div   onClick={() => dispatch(likePost(id))} className={style.bottomOption} {...longPressEvent} onMouseEnter={(e) => setShowReactions(true)} onClick={toggleShowReactions}>
+            {/* {!liked ? } */}
+            <Like />
+           <p> {likes.length}</p>
           </div>
           <div className={style.bottomOption}>
             <Chat
@@ -350,7 +391,7 @@ function PostCard({
             <p>4</p>
           </div>
           <div className={style.bottomOption} onClick={handleSharing}>
-            <BoxArrowUp 
+            <BoxArrowUp
               className={`${style.bottomIcons} ${
                 darkMode && style.bottomIconsDark
               }`}

@@ -12,6 +12,7 @@ authData: (state, action) => {
     localStorage.setItem('profile', JSON.stringify({...action.payload}))
 
 state.user =  action.payload
+console.log(action.payload)
 },
 
 logout: (state) => {

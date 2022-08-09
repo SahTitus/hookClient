@@ -40,6 +40,9 @@ export const postsSlice = createSlice({
 		update: (state, action) => {
 			state.posts = state.posts.filter((post) => post._id === action.payload._id ? action.payload : post );
 		},
+		like: (state, action) => {
+			state.posts = state.posts.filter((post) => post._id === action.payload._id ? action.payload : post );
+		},
 		comment: (state, action) => {
 		 state.posts = [...state.posts,  {posts: state.posts.map((post) => {
 			if (post._id === action.payload._id) return action.payload;
@@ -59,5 +62,6 @@ export const {
 	deletePost,
 	update,
 	detectLink,
+	like,
 } = postsSlice.actions;
 export default postsSlice.reducer;

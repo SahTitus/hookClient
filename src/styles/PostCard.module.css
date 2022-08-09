@@ -7,8 +7,8 @@
   border-bottom: 1px solid rgb(236, 234, 234);
   background-color: rgb(255, 255, 255);
   user-select: none !important;
-  -moz-user-select:none;
-  -ms-user-select:none;
+  -moz-user-select:none !important;
+  -ms-user-select:none !important;
   -webkit-user-select:none !important;
   margin-left: auto;
   margin-right: auto;
@@ -380,7 +380,7 @@ color: #576870;
 }
 
 .likeFill {
-  color: #1fbb5d!important;
+  color: #fc0f8e !important;
   font-size: 20px !important;
   user-select: none;
   /* stroke: white; */

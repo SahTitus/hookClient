@@ -8,4 +8,107 @@
     -moz-user-select:none;
     -ms-user-select:none;
     -webkit-user-select:none !important;
+    margin-bottom: 10px;
 }
+
+.commentCardDark {
+    background-color: #242526;
+    color: white;
+}
+
+.commentCardMain {
+    display: flex;
+    
+}
+
+.commentCardMainLeft {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.avatar {
+    margin-right: 10px;
+}
+
+.thread {
+    position: relative;
+    background-color: rgb(236, 235, 235);
+    border: none;
+    text-align: center;
+    width: 1px;
+    flex: 0.94;
+    right: 6px;
+    top: 4px;
+}
+
+.commentCardRight {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    /* background-color: rgb(240, 121, 121); */
+}
+
+.commentCardBox {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: #f1f2f3;
+    max-width: 90%;
+    min-width: 190px;
+    padding: 5px 10px;
+}
+
+.commentCardDark .commentCardBox {
+    background-color: #383838;
+}
+
+.commentCardBoxTop {
+    display: flex;
+    flex-direction: flex;
+    justify-content: space-between;
+    /* margin: 5px; */
+}
+
+.commentCardBoxTop p{
+   font-weight: 500;
+   font-size: 16px;
+}
+
+.commentCardBoxText {
+ margin-top: 3px;
+ line-height: 20px;
+ white-space: pre-wrap !important;
+ word-wrap: break-word;
+ overflow-wrap: break-word !important;
+ font-size: 15px;
+}
+
+.commentCardBtm {
+    display: flex;
+    flex-direction: flex;
+    justify-content: space-between;
+}
+
+.commentCardBtmLeft {
+    display: flex;
+    flex-direction: flex;
+}
+
+
+.commentCardBtmRight {
+
+}
+
+.commentCardBtmLeftLike {
+    margin:0px 20px 0px 10px ;
+}
+
+
+
+
+
+
+
+
+

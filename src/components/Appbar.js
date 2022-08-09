@@ -18,7 +18,7 @@ function Appbar() {
   const { value, toggleValue } = useToggle(false);
   const { darkMode } = useStateContex();
 
-  const user = JSON.parse(localStorage.getItem('profile'))?.data;
+  const user = JSON.parse(localStorage.getItem('profile'))
   // console.log(user)
 
   return (
@@ -57,7 +57,7 @@ function Appbar() {
                     darkMode && "headerRightIconDark"
                   }`}
                 >
-                  {user.result?.displayName.charAt(0)}
+                  {user.result?.displayName?.charAt(0) || user.result?.name.charAt(0)} 
                 </Avatar>
             </IconButton>
           </div>

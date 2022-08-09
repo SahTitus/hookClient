@@ -15,8 +15,9 @@ import { useDispatch } from "react-redux";
 import {
 	authData
 } from "../../redux/auth";
+import { signin, signup } from "../../actions/auth"
 
-const initialState = { email: "", password: "", confirmPassword: "" };
+const initialState = { firstName: "", lastName: "", email: "", password: "", confirmPassword: "", };
 
 function Auth() {
   const [showPassword, setShowPassword] = useState(false);
@@ -26,6 +27,8 @@ function Auth() {
   const { darkMode } = useStateContex();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const isSignup = true
   
 
   const handleChange = (e) => {
@@ -42,7 +45,7 @@ function Auth() {
     const token = user._tokenResponse.idToken
     const result = user.user
     try {
-    dispatch(authData({data: { result, token}}))
+    dispatch(authData({ result, token}))
       console.log(user)
       navigate(-1);
     } catch (error) {
@@ -57,7 +60,7 @@ function Auth() {
       const token = user._tokenResponse.idToken
       const result = user.user
       try {
-      dispatch(authData({data: { result, token}}))
+      dispatch(authData({ result, token}))
         console.log(user)
         navigate(-1);
 
@@ -101,21 +104,16 @@ function Auth() {
   //     }
   //   });
 
-  const signInWithEmailAndPassword = async (e) => {
-    try {
-      const result = await createUserWithEmailAndPassword({
-        auth,
-        // email: email,
-        // password: password,
-      });
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
+
+if (!isSignup) {
+dispatch(signup(formData, navigate))
+} else {
+  dispatch(signin(formData, navigate))
+}
+
+
     setFormData({ ...formData, initialState: "" });
     console.log(formData);
   };
@@ -129,12 +127,12 @@ function Auth() {
       </div>
       <div className="login__containerTitle">
         <div className="login__flexTitle">
-          <h2>{user ? "Sign In" : "Sign Up"}</h2>
+          <h2>{!user ? "Sign In" : "Sign Up"}</h2>
         </div>
       </div>
       <div className="login__container">
         <form className="login__form">
-         {!user && (
+         {user && (
           <>
            <Input
            autoFocus={true}
@@ -180,7 +178,7 @@ function Auth() {
             onClick={handleSubmit}
             // onClick={signInWithEmailAndPassword}
           >
-            {user ? "Sign In" : "Sign Up"}
+            {!user ? "Sign In" : "Sign Up"}
           </Button>
           <div className="login__formDivider">
             <hr />
@@ -202,9 +200,9 @@ function Auth() {
             Continue with Facecook
           </Button>
           <p className="login__newUser">
-            New to Hooklearn?
+            {user ? 'Already have an account?': 'New to Hooklearn?'}
             <span onClick={() => setUser((prevState) => !prevState)}>
-              {user ? "Sign Up" : "Sign In"}
+              {user ? "Sign In" : "Sign Up"}
             </span>
           </p>
         </form>

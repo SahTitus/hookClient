@@ -57,7 +57,7 @@ function AddPost() {
   const [image, setImage] = useState(null);
   const { darkMode } = useStateContex();
   const { value, toggleValue } = useToggle(true);
-  const user = JSON.parse(localStorage.getItem("profile"))?.data;
+  const user = JSON.parse(localStorage.getItem("profile"))
   const { link } = useSelector((state) => state.posts);
   const linkUrl = formData.link;
   const [imageData, setImageData] = useState([]);
@@ -194,8 +194,9 @@ function AddPost() {
           image_placeholderId: imageData[0]?.public_id,
           image_placeholder: imageData[0]?.secure_url,
         },
-        username: user?.result?.displayName,
+        creatorName: user?.result?.displayName || user?.result?.name,
         userId: user?.result?.uid,
+        userDp: user?.result?.photoURL,
       })
     );
     setFormData(initialState);

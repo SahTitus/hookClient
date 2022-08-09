@@ -18,14 +18,13 @@ import {
 function Drawer({ closeDrawer}) {
   const { darkMode } = useStateContex();
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
-  // const user=useState(JSON.parse(localStorage.getItem("profile")))
+  const user = JSON.parse(localStorage.getItem('profile'))
+
 
   const logOut = () => {
     dispatch(logout())
     window.location.reload(true)
     closeDrawer()
-    // navigate('/')
   }
 
   return (
@@ -35,7 +34,7 @@ function Drawer({ closeDrawer}) {
           <div className={style.profile__left}>
             <Avatar className={style.profile__avatar} />
             <div className={style.profile__info}>
-              <h4 className={style.username}>Sah Titus Samuel</h4>
+              <h4 className={style.username}>{user.result?.displayName || user.result?.name} </h4>
               <p>View profile</p>
             </div>
           </div>

@@ -17,7 +17,7 @@ function PostDetails() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
-  const user = JSON.parse(localStorage.getItem("profile"))?.data;
+  const user = JSON.parse(localStorage.getItem("profile"))
   const [focused, setFocused] = useState(false);
 
   const { darkMode } = useStateContex();
@@ -79,6 +79,11 @@ function PostDetails() {
             </p>
           </div>
 
+          <CommentCard
+           />
+          <CommentCard />
+          <CommentCard />
+          <CommentCard />
           <CommentCard />
         </div>
       </div>

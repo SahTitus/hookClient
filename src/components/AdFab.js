@@ -19,7 +19,7 @@ import { useStateContex } from "../store/StateProvider";
 
 export default function AdFab() {
   const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("profile"))?.data
+    JSON.parse(localStorage.getItem("profile"))
   );
 
   const { darkMode } = useStateContex();

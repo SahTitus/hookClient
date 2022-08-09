@@ -8,7 +8,8 @@ import {
 	update,
 	deletePost,
 	detectLink,
-	comment
+	comment,
+	like
 } from "../redux/posts";
 
 export const fetchPosts = () => async (dispatch) => {
@@ -62,6 +63,18 @@ export const updatePost = (id, post) => async (dispatch) => {
 		const updatedPost = await api.updatePost(id, post);
 
 		dispatch(update(updatedPost));
+	} catch (error) {
+		console.error(error);
+	}
+};
+
+export const likePost = (id) => async (dispatch) => {
+	console.log(id)
+	try {
+		const { data} = await api.likePost(id);
+		console.log(data)
+
+		dispatch(like(data));
 	} catch (error) {
 		console.error(error);
 	}

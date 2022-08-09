@@ -83,6 +83,7 @@ background-color: #3d3d3d;
 	margin: 0 5px;
 	border: none;
 	outline-width: 0;
+	font-size: 16px !important;
 }
 
 .loginDark .login__formInput {

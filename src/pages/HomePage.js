@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/HomePage.css";
-// import QuestionCard from "./QuestionCard";
-// import { collection, query, onSnapshot } from "@firebase/firestore";
-// import { db, auth } from "./firebase";
-// import { onAuthStateChanged } from "@firebase/auth";
 import AdFab from "../components/AdFab";
-import Spin from "react-cssfx-loading/lib/Spin";
 import BottomNavigation from "../components/BottomNavigation";
 import Appbar from "../components/Appbar";
 // import QuestionCard from "../components/QuestionCard";
@@ -14,17 +9,14 @@ import PostCard from "../components/Post/PostCard";
 import { useStateContex } from "../store/StateProvider";
 import SkeLoadash from "../components/loadash/Skeleton";
 import ErrorMsg from "../components/connectivity/ErrorMsg";
-import axios from "axios";
-import Hook from "../images/Hook.jpg"
 import Spinner from "../components/loadash/Spinner";
-// import Upload from "../utils/UploadImage";
 
 function Homepage({ posts, isLoading, error }) {
   // const dd = window.matchMedia('(prefers-color-scheme: light)').matches
   // console.log(dd)
 
   const { darkMode } = useStateContex();
-  const user = JSON.parse(localStorage.getItem('profile'))?.data
+  const user = JSON.parse(localStorage.getItem('profile'))
   // if (!posts) return null;
   // if (!user) 
 
@@ -58,11 +50,10 @@ function Homepage({ posts, isLoading, error }) {
               link={post.link}
               text={post?.text}
               username={post.username}
-              creatorName={post?.username}
+              creatorName={post?.creatorName}
               creatorImage={post?.userImage}
               userId={post.userId}
-              likes={0}
-              dislikes={0}
+              likes={post.likes}
               group="Tanhans"
               timestamp={post.createdAt}
               noOfComments={0}
@@ -73,23 +64,6 @@ function Homepage({ posts, isLoading, error }) {
             />
           ))
         )}
-
-{/* <PostCard
-
-              image={Hook}
-              link=''
-              text=''
-              username='Samuel'
-              userId='9'
-              likes={0}
-              dislikes={0}
-              group="Tanhans"
-              timestamp='2d'
-              noOfComments={0}
-              noOfShares={0}
-              description='lllll'
-
-            /> */}
 
         {/*
         <QuestionCard

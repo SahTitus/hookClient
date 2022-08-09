@@ -17,9 +17,19 @@ import { fetchPosts } from "../actions/posts";
 function Homepage() {
   // const dd = window.matchMedia('(prefers-color-scheme: light)').matches
   // console.log(dd)
+  const dispatch = useDispatch();
 
   const { darkMode } = useStateContex();
   const user = JSON.parse(localStorage.getItem('profile'))
+
+  const { posts, isLoading, error} = useSelector((state) => state.posts);
+  // const {user } = useSelector((state) => state.auth);
+  const feeds = posts.slice().sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+
+  useEffect(() => {
+    dispatch(fetchPosts());
+  }, [dispatch]);
+
 
   return (
     <div className={`homepage ${isLoading && 'overflowHidden'} ${darkMode && "homepage__dark"}`}>

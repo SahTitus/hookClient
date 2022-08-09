@@ -50,7 +50,7 @@ const initialState = {
   description: "",
 };
 
-function AddPost({setRefresh}) {
+function AddPost() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(initialState);
@@ -195,7 +195,6 @@ function AddPost({setRefresh}) {
           image_placeholder: imageData[0]?.secure_url,
         },
         creatorName: user?.result?.displayName || user?.result?.name,
-        userId: user?.result?.uid,
         userDp: user?.result?.photoURL,
       })
     );
@@ -203,7 +202,6 @@ function AddPost({setRefresh}) {
     // setImage(null);
 
     navigate("/");
-    setRefresh(true);
   };
 
   // const cancelSelectImg = () => {

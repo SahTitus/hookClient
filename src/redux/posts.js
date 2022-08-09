@@ -38,10 +38,10 @@ export const postsSlice = createSlice({
 			state.posts = state.posts.filter((post) => post._id !== action.payload);
 		},
 		update: (state, action) => {
-			state.posts = state.posts.filter((post) => post._id === action.payload._id ? action.payload : post );
+			state.posts = state.posts.map((post) => post._id === action.payload._id ? action.payload : post );
 		},
 		like: (state, action) => {
-			state.posts = state.posts.filter((post) => post._id === action.payload._id ? action.payload : post );
+			state.posts = state.posts.map((post) => post._id === action.payload._id ? action.payload : post );
 		},
 		comment: (state, action) => {
 		 state.posts = [...state.posts,  {posts: state.posts.map((post) => {

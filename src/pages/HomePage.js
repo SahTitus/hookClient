@@ -26,7 +26,7 @@ function Homepage() {
 
   useEffect(() => {
     dispatch(fetchPosts());
-  }, []);
+  }, [dispatch]);
 
   const { darkMode } = useStateContex();
   const user = JSON.parse(localStorage.getItem('profile'))
@@ -35,13 +35,13 @@ function Homepage() {
     <div className={`homepage ${isLoading && 'overflowHidden'} ${darkMode && "homepage__dark"}`}>
       <Appbar />
 
-      <div className="createPost">{!isLoading && <CreatePost />}</div>
+      {/* <div className="createPost">{!isLoading && <CreatePost />}</div> */}
       {/* <Upload /> */}
       <div className={`homepage__feed `}>
       
        
       {/* { (!isLoading && error ) &&  <ErrorMsg error={error} />} */}
-        {isLoading ? (
+        {error && !posts.length ? (
           // <div className='loadash'>{<Spin className="spin"/>}</div>
           <div className='loadash'>
             

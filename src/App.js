@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./styles/App.css";
 // import GroupPage from "./pages/GroupPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -34,16 +34,16 @@ function App() {
   const theme = useTheme();
   const dispatch = useDispatch();
   const { online } = useNetwork();
-  const [refresh, setRefresh] = useState(false);
+
   const { posts, isLoading, error} = useSelector((state) => state.posts);
   // const {user } = useSelector((state) => state.auth);
   const feeds = posts.slice().sort((a, b) => b.createdAt.localeCompare(a.createdAt))
 
 // console.log(user)
 
-  useEffect(() => {
-    dispatch(fetchPosts());
-  }, [refresh]);
+  // useEffect(() => {
+  //   dispatch(fetchPosts());
+  // }, [dispatch]);
 
 
   return (
@@ -65,7 +65,7 @@ function App() {
               {/* <Route path="/createGroup" element={<CreateGroup />} /> */}
               <Route path="/profile" element={<Profile />} />
               {/* <Route path="/PostForm" element={<PostForm />} /> */}
-              <Route path="/addPost" element={<AddPost setRefresh={setRefresh} />} />
+              <Route path="/addPost" element={<AddPost />} />
               <Route path="/chatRoom" element={<ChatRoom />} />
               {/* <Route path="/myhalls" element={<Myhalls />} /> */}
               {/* <Route path="/explore" element={<Explore />} /> */}

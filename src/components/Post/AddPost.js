@@ -50,7 +50,7 @@ const initialState = {
   description: "",
 };
 
-function AddPost() {
+function AddPost({setRefresh}) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(initialState);
@@ -203,6 +203,7 @@ function AddPost() {
     // setImage(null);
 
     navigate("/");
+    setRefresh(true);
   };
 
   // const cancelSelectImg = () => {

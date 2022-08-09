@@ -17,16 +17,6 @@ import { fetchPosts } from "../actions/posts";
 function Homepage() {
   // const dd = window.matchMedia('(prefers-color-scheme: light)').matches
   // console.log(dd)
-  const dispatch = useDispatch();
-
-  const { posts, isLoading, error} = useSelector((state) => state.posts);
-  const feeds = posts.slice().sort((a, b) => b.createdAt.localeCompare(a.createdAt))
-
-  console.log(posts)
-
-  useEffect(() => {
-    dispatch(fetchPosts());
-  }, [dispatch]);
 
   const { darkMode } = useStateContex();
   const user = JSON.parse(localStorage.getItem('profile'))

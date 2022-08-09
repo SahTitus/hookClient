@@ -150,7 +150,7 @@ function PostCard({
 
  const Like = () => {
   
-if (likes.length > 0)  { return likes.find((like )=> like === (user?.result?.uid || user?.result?._id)) ?
+if (likes?.length > 0)  { return likes.find((like )=> like === (user?.result?.uid || user?.result?._id)) ?
   (
     <>
     <Heart
@@ -372,7 +372,7 @@ return <>
           <div   onClick={() => dispatch(likePost(id))} className={style.bottomOption} {...longPressEvent} onMouseEnter={(e) => setShowReactions(true)} onClick={toggleShowReactions}>
             {/* {!liked ? } */}
             <Like />
-           <p> {likes.length}</p>
+           <p> {likes?.length}</p>
           </div>
           <div className={style.bottomOption}>
             <Chat

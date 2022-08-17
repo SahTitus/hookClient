@@ -263,7 +263,7 @@ function PostCard({
       <div onClick={openPost} className={style.top}>
         <div className={style.topLeft}>
           <Link to="/profile">
-            <Avatar src={user?.result?.photoURL} className={style.avatar} />
+            <Avatar src={creatorImage} className={style.avatar} />
           </Link>
 
           <div className={style.info}>

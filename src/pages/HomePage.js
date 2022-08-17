@@ -62,7 +62,7 @@ function Homepage() {
               text={post?.text}
               username={post.username}
               creatorName={post?.creatorName}
-              creatorImage={post?.userImage}
+              creatorImage={post?.userDp}
               userId={post.userId}
               likes={post.likes}
               reposts={post.reposts}

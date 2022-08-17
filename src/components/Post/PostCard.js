@@ -1,4 +1,3 @@
-// import { ThumbDown } from "@material-ui/icons";
 import {
   AutorenewOutlined,
   Circle,
@@ -12,13 +11,12 @@ import {
   Drawer,
   IconButton,
 } from "@mui/material";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "../../styles/PostCard.module.css";
 import Reactions from "../Reactions";
-// import useToggle from "../../utils/useToggle"; 
 import PostCardMenu from "./PostCardMenu";
 import { useStateContex } from "../../store/StateProvider";
-import { createPost, likePost } from "../../actions/posts";
+import { createPost, likePost, rePost } from "../../actions/posts";
 import { useDispatch } from "react-redux";
 import { parseISO, formatDistanceToNowStrict } from "date-fns";
 import {
@@ -36,13 +34,11 @@ import useLongPress from "../../utils/useLongPress";
 function PostCard({
   id,
   creatorName,
-  userId,
   creatorImage,
   description,
   link,
   text,
-  noOfShares,
-  noOfComments,
+ comments,
   hallName,
   linkData,
   likes,
@@ -50,26 +46,28 @@ function PostCard({
   timestamp,
   question,
   reposted,
+  reposts
 }) {
-  const [liked, setLiked] = useState(false);
   // showReactions
-  const [ showReactions, setShowReactions ] = useState(false);
+  const [showReactions, setShowReactions] = useState(false);
   const [reactions, setReactions] = useState([]);
   const dispatch = useDispatch();
-  // const [showIcon, setIconShow] = useState(true);
   const navigate = useNavigate();
   const [open, setOpen] = useState(true);
-  const user = JSON.parse(localStorage.getItem("profile"))
+  const user = JSON.parse(localStorage.getItem("profile"));
   const hideReadmore = window.location.href.includes(`${id}`);
+  const [likesArray, setLikesArray] = useState(likes);
+  const [repostsArray, setRepostsArray] = useState(reposts);
 
   const onLongPress = () => {
     console.log("longpress is triggered");
-    setShowReactions(true);
+    // setShowReactions(true);
   };
 
   const onClick = () => {
-    console.log("click is triggered");
-    dispatch(likePost(id))
+    // console.log("click is triggered");
+    dispatch(likePost(id));
+    handleLikes()
   };
 
   const defaultOptions = {
@@ -90,39 +88,38 @@ function PostCard({
     if (hideReadmore) setOpen(true);
   }, []);
 
-  const toggleShowReactions = () => {
-
-    setLiked(!liked);
-  };
+  // const toggleShowReactions = () => {
+  //   setLiked(!liked);
+  // };
 
   const selectReaction = (reaction) => {
-    toggleReactionsCallback(reaction);
-    toggleShowReactions();
+    // toggleReactionsCallback(reaction);
+    // toggleShowReactions();
   };
 
   //StateContext
   const { darkMode } = useStateContex();
 
   // Put this callback function in redux
-  const toggleReactionsCallback = useCallback(
-    (reaction) => {
-      const includesReactions = !!reactions.find(
-        (item) => item.id === reaction.id
-      );
-      let newReactions = [];
+  // const toggleReactionsCallback = useCallback(
+  //   (reaction) => {
+  //     const includesReactions = !!reactions.find(
+  //       (item) => item.id === reaction.id
+  //     );
+  //     let newReactions = [];
 
-      if (includesReactions) {
-        // Remove Reaction
-        newReactions = reactions;
-      } else {
-        // Add Reaction
-        newReactions = reactions.concat(reaction);
-      }
+  //     if (includesReactions) {
+  //       // Remove Reaction
+  //       newReactions = reactions;
+  //     } else {
+  //       // Add Reaction
+  //       newReactions = reactions.concat(reaction);
+  //     }
 
-      setReactions(newReactions);
-    },
-    [reactions]
-  );
+  //     setReactions(newReactions);
+  //   },
+  //   [reactions]
+  // );
 
   const [state, setState] = useState({
     bottom: false,
@@ -132,15 +129,22 @@ function PostCard({
     setState({ ...state, [anchor]: open });
   };
 
-  const postData = {
-    text,
+  const repostData = {
+    id,
+    creatorName,
+    creatorImage,
     description,
-    // hallName,
-    question,
-    // pollQuestion,
-    // pollOptions: pollOption.value,
     link,
+    text,
+   comments,
+    hallName,
+    linkData,
+    likes,
     image,
+    timestamp,
+    question,
+    reposted,
+    reposts,
     repost: true,
   };
 
@@ -148,45 +152,58 @@ function PostCard({
     navigate(`/postDetails/${id}`);
   };
 
- const Like = () => {
-  
-if (likes?.length > 0)  { return likes.find((like )=> like === (user?.result?.uid || user?.result?._id)) ?
-  (
-    <>
-    <Heart
-      className={`${style.bottomIcons} ${style.bottomLikeIcon} ${
-        darkMode && style.bottomIconsDark
-      }`}
-    />
-    </>
-  ) : (
-    <>
-    <HeartFill
-      onClick={() => setLiked(!liked)}
-      className={style.likeFill}
-    />
-    </>
+  const userId = user?.result?.uid || user?.result?._id;
+  const hasLiked = likesArray?.find((like) => like === userId);
 
-  )
-  }
-return <>
-<Heart
-  className={`${style.bottomIcons} ${style.bottomLikeIcon} ${
-    darkMode && style.bottomIconsDark
-  }`}
-/>
-</>
-  }
-  
-  const handleSubmit = async (e) => {
-    // e.preventDefault();
-    dispatch(
-      createPost({
-        ...postData,
-        creatorName: user?.result?.displayName,
-        userId: user?.result?.uid,
-      })
+  const Like = () => {
+    if (hasLiked) {
+      return (
+        <>
+          <HeartFill
+            className={`${style.bottomIcons} ${style.bottomLikeIcon} ${style.likeFill}`}
+          />
+        </>
+      );
+    }
+    return (
+      <>
+        <Heart
+          className={`${style.bottomIcons} ${style.bottomLikeIcon} ${
+            darkMode && style.bottomIconsDark
+          }`}
+        />
+      </>
     );
+  };
+
+  const handleLikes = async () => {
+    dispatch(likePost(id));
+    if (hasLiked) {
+      setLikesArray(likesArray.filter((id) => id !== userId));
+    } else {
+      setLikesArray([...likesArray, userId]);
+    }
+  };
+
+  const hasReposted = repostsArray?.find((like) => like === userId);
+
+  const handleRepost = async () => {
+    dispatch(rePost(id));
+    if (hasReposted) {
+      setRepostsArray(repostsArray.filter((id) => id !== userId));
+    } else {
+      setRepostsArray([...repostsArray, userId]);
+
+      dispatch(
+        createPost({
+          ...repostData,
+          creatorName: user?.result?.displayName,
+          userId: user?.result?.uid,
+        })
+      );
+    }
+
+
     console.log("Reposted");
   };
 
@@ -245,7 +262,7 @@ return <>
       )}
       <div onClick={openPost} className={style.top}>
         <div className={style.topLeft}>
-          <Link to="/profile" >
+          <Link to="/profile">
             <Avatar src={user?.result?.photoURL} className={style.avatar} />
           </Link>
 
@@ -261,7 +278,9 @@ return <>
                 <>
                   <Circle className={style.dot} />{" "}
                   {reactions.slice(0, 5).map((reaction, i) => (
-                    <span key={i} className={style.reaction}>{reaction.label}</span>
+                    <span key={i} className={style.reaction}>
+                      {reaction.label}
+                    </span>
                   ))}
                 </>
               )}
@@ -369,10 +388,14 @@ return <>
           </p>
         </div> */}
         <div className={style.bottomOptions}>
-          <div   onClick={() => dispatch(likePost(id))} className={style.bottomOption} {...longPressEvent} onMouseEnter={(e) => setShowReactions(true)} onClick={toggleShowReactions}>
-            {/* {!liked ? } */}
+          <div
+            className={style.bottomOption}
+            {...longPressEvent}
+          >
             <Like />
-           <p> {likes?.length}</p>
+            {!!likesArray?.length > 0 && 
+              <p>{likesArray?.length}</p>
+            }
           </div>
           <div className={style.bottomOption}>
             <Chat
@@ -380,15 +403,19 @@ return <>
                 darkMode && style.bottomIconsDark
               }`}
             />
-            <p>11</p>
+            {!!comments?.length > 0 && 
+              <p>{comments.length}</p>
+            }
           </div>
-          <div className={style.bottomOption} onClick={handleSubmit}>
+          <div className={style.bottomOption} onClick={handleRepost}>
             <ArrowRepeat
               className={`${style.bottomIcons} ${
                 darkMode && style.bottomIconsDark
               }`}
             />
-            <p>4</p>
+             {!!repostsArray?.length > 0 && 
+              <p>{repostsArray.length}</p>
+            }
           </div>
           <div className={style.bottomOption} onClick={handleSharing}>
             <BoxArrowUp

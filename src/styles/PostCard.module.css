@@ -12,6 +12,8 @@
   -webkit-user-select:none !important;
   margin-left: auto;
   margin-right: auto;
+  /* margin-top: 10px; */
+  margin-bottom: 3px;
   max-width: 900px;
 }
 
@@ -354,8 +356,9 @@ color: #576870;
 .bottom {
   display: flex;
   flex-direction: column;
-  margin: -8px 10px -2px 10px;
-  padding: 2px;
+  /* margin: -8px 10px -2px 10px; */
+  /* padding: 2px; */
+border-top: 1px solid rgb(240, 237, 237);
 }
 
 .bottomCounts {
@@ -377,14 +380,6 @@ color: #576870;
 .likes span {
   font-size: 13px;
   margin-left: -4px;
-}
-
-.likeFill {
-  color: #fc0f8e !important;
-  font-size: 20px !important;
-  user-select: none;
-  /* stroke: white; */
-  /* stroke-width: 1.1px !important; */
 }
 
 .rightCounts {
@@ -413,14 +408,13 @@ color: #576870;
   align-items: center;
   justify-content: space-between;
   margin: 10px 0 10px 0;
-  /* height: 50px; */
 }
 
 .bottomOption{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 20% !important;
+  width: 25% !important;
 }
 
 .bottomOption p {
@@ -442,14 +436,20 @@ color: #576870;
   font-size: 21px !important;
   user-select: none;
   color: rgb(87, 104, 112) !important;
-
- /* stroke-width: 1.0px !important;  */
   cursor: pointer;
 }
 
 .bottomLikeIcon {
   font-size: 20px !important;
+  cursor: pointer;
 }
+
+.likeFill {
+  color: #fc0f8e !important;
+  font-size: 20px !important;
+cursor: pointer;
+}
+
 
 .bottomIconsDark {
   color: rgb(197, 197, 197) !important;

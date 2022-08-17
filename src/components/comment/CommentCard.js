@@ -1,11 +1,12 @@
 import { Avatar } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useStateContex } from "../../store/StateProvider";
 import style from "./CommentCard.module.css";
 
-function CommentCard() {
+function CommentCard({ comment, image, creatorName, createdAt, userDp}) {
   const { darkMode } = useStateContex();
   const user = JSON.parse(localStorage.getItem("profile"))
+  // const [comments, setComments] = useState([post?.comments])
 
   return (
     <div
@@ -14,18 +15,18 @@ function CommentCard() {
       <div className={style.commentCardMain}>
         <div className={style.commentCardMainLeft}>
           {" "}
-          <Avatar src={user?.result?.photoURL} className={style.avatar} />
+          <Avatar src={userDp } className={style.avatar} />
           <hr className={style.thread} />
         </div>
 
         <div className={style.commentCardRight}>
           <div className={style.commentCardBox}>
             <div className={style.commentCardBoxTop}>
-              <p>Sah Titus</p>
+              <p>{creatorName}</p>
               <span>1 d</span>
             </div>
             <p className={style.commentCardBoxText}>
-              Ei! you lie jcgcttt 77f7  
+             {comment} 
             </p>
           </div>
 

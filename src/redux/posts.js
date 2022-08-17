@@ -43,12 +43,11 @@ export const postsSlice = createSlice({
 		like: (state, action) => {
 			state.posts = state.posts.map((post) => post._id === action.payload._id ? action.payload : post );
 		},
-		comment: (state, action) => {
-		 state.posts = [...state.posts,  {posts: state.posts.map((post) => {
-			if (post._id === action.payload._id) return action.payload;
-			return post;
-
-		 } )}]
+		repost: (state, action) => {
+			state.posts = state.posts.map((post) => post._id === action.payload._id ? action.payload : post );
+		},
+		commentPost: (state, action) => {
+			state.posts = state.posts.map((post) => post._id === action.payload._id ? action.payload : post );
 		}
 	},
 });
@@ -63,5 +62,7 @@ export const {
 	update,
 	detectLink,
 	like,
+	repost,
+	commentPost,
 } = postsSlice.actions;
 export default postsSlice.reducer;

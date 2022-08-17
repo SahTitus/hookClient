@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "../styles/HomePage.css";
 import AdFab from "../components/AdFab";
 import BottomNavigation from "../components/BottomNavigation";
@@ -65,9 +65,10 @@ function Homepage() {
               creatorImage={post?.userImage}
               userId={post.userId}
               likes={post.likes}
+              reposts={post.reposts}
               group="Tanhans"
               timestamp={post.createdAt}
-              noOfComments={0}
+              comments={post.comments}
               noOfShares={0}
               description={post.description}
               reposted={post.repost}

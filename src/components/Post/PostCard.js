@@ -98,7 +98,7 @@ function PostCard({
   };
 
   //StateContext
-  const { darkMode } = useStateContex();
+  const { darkMode, setFocus } = useStateContex();
 
   // Put this callback function in redux
   // const toggleReactionsCallback = useCallback(
@@ -148,8 +148,11 @@ function PostCard({
     repost: true,
   };
 
-  const openPost = () => {
+  const openPost = (comment) => {
     navigate(`/postDetails/${id}`);
+    if (comment === 'comment') {
+      setFocus(true)
+    }
   };
 
   const userId = user?.result?.uid || user?.result?._id;
@@ -397,7 +400,7 @@ function PostCard({
               <p>{likesArray?.length}</p>
             }
           </div>
-          <div className={style.bottomOption}>
+          <div className={style.bottomOption} onClick={() => openPost('comment')}>
             <Chat
               className={`${style.bottomIcons} ${
                 darkMode && style.bottomIconsDark

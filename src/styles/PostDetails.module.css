@@ -119,6 +119,20 @@ margin-top: 50px;
     width: 38px !important;
 }
 
+.replying{
+    display: flex;
+    align-items: center;
+    margin: 0px 0 10px 5px;
+}
+
+.replying p {
+    font-size: 14px;
+}
+
+.replying > p > span {
+color: #1fbb5d;
+}
+
 .comment__form {
     display: flex;
     align-items: center;

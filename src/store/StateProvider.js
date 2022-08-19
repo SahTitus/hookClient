@@ -8,6 +8,9 @@ export const StateProvider = ({ children }) => {
     localStorage.getItem("theme") === "dark"
   );
  
+  const [ replyingTo, setReplyingTo] = useState(false);
+  const [ focus, setFocus] = useState(false);
+
   const currentTheme = localStorage.getItem("currentTheme");
 
   useEffect(() => {
@@ -27,8 +30,11 @@ export const StateProvider = ({ children }) => {
     <StateContext.Provider
       value={{
         darkMode,
-        // setDarkMode,
+        focus,
+        replyingTo,
+        setReplyingTo,
         setMode,
+        setFocus,
       }}
     >
       {children}

@@ -1,4 +1,4 @@
-import { ArrowBack,  } from "@mui/icons-material";
+import { ArrowBack } from "@mui/icons-material";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -15,25 +15,27 @@ import {
   fetchComments,
   addMorecomments,
 } from "../actions/comments";
-import {
-  commentPst,
-} from "../actions/posts";
+import { commentPst } from "../actions/posts";
 
 function PostDetails() {
   const [comment, setComment] = useState("");
+  const [reply, setReply] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
   const user = JSON.parse(localStorage.getItem("profile"));
   const [focused, setFocused] = useState(false);
 
-  const { darkMode } = useStateContex();
+  const { darkMode, focus, replyingTo } = useStateContex();
   const { post, isLoading } = useSelector((state) => state.posts);
   const { comments, commentsId } = useSelector((state) => state.comments);
-  const sortComments = comments.slice().sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+  const sortComments = comments
+    .slice()
+    .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
   const disable = !comment.trim() || !comment.length > 0;
 
   const commentsRef = useRef();
+  console.log(replyingTo);
 
   useEffect(() => {
     if (!user) navigate("/auth");
@@ -52,18 +54,27 @@ function PostDetails() {
     userDp: user?.result?.photoURL,
   };
 
+  const replyData = {
+    reply,
+    replyingTo,
+  };
 
-  const handleSubmit = async (e) => {
-    commentsRef.current?.scrollIntoView({ behavior: "smooth" });
+  const handleSubmit = async (e, value) => {
     e.preventDefault();
-    dispatch(commentPst(id))
-    if (commentsId) {
-      dispatch(addMorecomments(commentsId, { commentData, postId: id }));
-    } else {
-      dispatch(addComment({ commentData, postId: id }));
-    }
+    if (value === "comment") {
+      commentsRef.current?.scrollIntoView({ behavior: "smooth" });
+      dispatch(commentPst(id));
+      if (commentsId) {
+        dispatch(addMorecomments(commentsId, { commentData, postId: id }));
+      } else {
+        dispatch(addComment({ commentData, postId: id }));
+      }
 
-    setComment("")
+      setComment("");
+    } else {
+      // dispatch(addReply(commentsId, {replyData }))
+      setReply('')
+    }
   };
 
   if (isLoading)
@@ -82,7 +93,7 @@ function PostDetails() {
         <h4>{post.username}</h4>
       </div>
 
-      <div className={style.postDetails__body} >
+      <div className={style.postDetails__body}>
         <PostCard
           key={post._id}
           id={post._id}
@@ -100,9 +111,9 @@ function PostDetails() {
           reposted={post.repost}
           linkData={post?.linkData}
         />
-       <div  ref={commentsRef} />
-        <div className={style.comments} >
-          <div className={style.comments__top} >
+        <div ref={commentsRef} />
+        <div className={style.comments}>
+          <div className={style.comments__top}>
             <p className={style.comments__topLeft}>Comments</p>
             <p className={style.comments__topRight}>
               Most relevant{" "}
@@ -114,7 +125,6 @@ function PostDetails() {
 
           {sortComments?.map((comment, i) => (
             <CommentCard
-            
               key={i}
               comment={comment.comment}
               timestamp={comment.createdAt}
@@ -127,23 +137,46 @@ function PostDetails() {
       </div>
 
       <div className={`${style.comment__footer} ${focused && style.focused}`}>
+        {replyingTo.length && (
+        <div className={style.replying}>
+          <p>
+            Replying to <span>{replyingTo}</span>
+          </p>
+        </div>
+         )} 
         <div className={`${style.comment__form}`}>
           <Avatar
             src={user?.result?.photoURL}
             className={style.comment__formAvatar}
           />
           <form onSubmit={handleSubmit}>
-            <TextareaAutosize
-              className={style.comment__textarea}
-              placeholder="Leave a comment here..."
-              value={comment}
-              maxRows={14}
-              type="text"
-              onChange={handleChange}
-              onFocus={(e) => setFocused(true)}
-              onBlur={(e) => setFocused(false)}
-              multiline="multiline"
-            />
+            {!replyingTo ? (
+              <TextareaAutosize
+                className={style.comment__textarea}
+                placeholder="Leave a comment here..."
+                value={comment}
+                maxRows={14}
+                type="text"
+                autoFocus={focus}
+                onChange={handleChange}
+                onFocus={(e) => setFocused(true)}
+                onBlur={(e) => setFocused(false)}
+                multiline="multiline"
+              />
+            ) : (
+              <TextareaAutosize
+                className={style.comment__textarea}
+                placeholder="Leave your reply here..."
+                value={reply}
+                maxRows={14}
+                type="text"
+                autoFocus={true}
+                onChange={(e) => setReply(e.target.value)}
+                onFocus={(e) => setFocused(true)}
+                onBlur={(e) => setFocused(false)}
+                multiline="multiline"
+              />
+            )}
           </form>
         </div>
 

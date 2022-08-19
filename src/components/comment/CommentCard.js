@@ -3,12 +3,18 @@ import React, { useState } from "react";
 import { useStateContex } from "../../store/StateProvider";
 import style from "./CommentCard.module.css";
 
-function CommentCard({ comment, image, creatorName, createdAt, userDp}) {
-  const { darkMode } = useStateContex();
-  const user = JSON.parse(localStorage.getItem("profile"))
+function CommentCard({ comment, image, creatorName, createdAt, userDp,}) {
+  const { darkMode, setReplyingTo, setFocus } = useStateContex();
+  // const user = JSON.parse(localStorage.getItem("profile"))
   // const [comments, setComments] = useState([post?.comments])
 
+  const handleReply = () => {
+      setReplyingTo(creatorName)
+      setFocus(true)
+  }
+
   return (
+ 
     <div
       className={`${style.commentCard} ${darkMode && style.commentCardDark}`}
     >
@@ -33,7 +39,7 @@ function CommentCard({ comment, image, creatorName, createdAt, userDp}) {
           <div className={style.commentCardBtm}>
             <div className={style.commentCardBtmLeft}>
               <p className={style.commentCardBtmLeftLike}>Like</p>
-              <p>Reply</p>
+              <p onClick={handleReply}>Reply</p>
             </div>
             <p className={style.commentCardBtmRight}>1 💖</p>
           </div>

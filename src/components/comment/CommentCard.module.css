@@ -52,6 +52,10 @@
     top: 4px;
 }
 
+.commentCardDark .thread {
+    background-color: #3d3d3d;
+}
+
 .commentCardRight {
     display: flex;
     flex-direction: column;

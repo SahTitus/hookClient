@@ -40,6 +40,11 @@ export const commentsSlice = createSlice({
 			state.commentsId = action.payload._id;
 			state.postId =  action.payload.postId;
 		},
+		pushReply: (state, action) => {
+			state.comments =  action.payload.comments
+			state.commentsId = action.payload._id;
+			state.postId =  action.payload.postId;
+		},
 		likeComment: (state, action) => {
 			state.comments = state.comments.map((post) => post._id === action.payload._id ? action.payload : post );
 		},
@@ -54,6 +59,7 @@ export const {
 	pushComment,
 	detectLink,
 	like,
-	createComment
+	createComment,
+	pushReply
 } = commentsSlice.actions;
 export default commentsSlice.reducer;

@@ -89,7 +89,7 @@ function AddPost() {
       600,
       700,
       "JPEG",
-      80,
+      90,
       0,
       (uri) => {
         setImage(uri);

@@ -2,48 +2,58 @@ import { Avatar } from "@mui/material";
 import React, { useState } from "react";
 import { useStateContex } from "../../store/StateProvider";
 import style from "./CommentCard.module.css";
-import ReplyCard from "./ReplyCard";
 
-function CommentCard({ comment, replies, setIsReply, setCommentId, id, image, creatorName, createdAt, userDp,}) {
+function ReplyCard({
+  reply,
+  replyingTo,
+  setIsReply,
+  setCommentId,
+  id,
+  image,
+  creatorName,
+  createdAt,
+  userDp,
+}) {
   const { darkMode, setReplyingTo, setFocus } = useStateContex();
   // const user = JSON.parse(localStorage.getItem("profile"))
   // const [comments, setComments] = useState([post?.comments])
 
   const handleReply = () => {
-      setReplyingTo(creatorName)
-      setFocus(true)
-      setIsReply(true)
-      setCommentId(id)
-  }
-
-  console.log(replies)
+    setReplyingTo(creatorName);
+    setFocus(true);
+    setIsReply(true);
+    setCommentId(id);
+  };
 
   return (
- 
     <div
-      className={`${style.commentCard} ${darkMode && style.commentCardDark}`}
-      
+      className={`${style.commentCard} ${darkMode && style.commentCardDark} ${
+        !!reply.length && style.replyCard
+      } `}
     >
-        <div className={style.commentCardMainLeft}>
-          {" "}
-          <Avatar src={userDp } className={style.avatar} />
-          {!!replies.length &&  <hr className={style.thread} />}
-        </div>
-      <div className={style.commentCardMain} id='fist'>
-      
-
+      <div className={style.commentCardMainLeft}>
+        {" "}
+        <Avatar
+          src={userDp}
+          className={`${style.avatar} ${!!reply.length && style.replyAvatar}`}
+        />
+      </div>
+      <div className={style.commentCardMain}>
         <div className={style.commentCardRight}>
           <div className={style.commentCardBox}>
             <div className={style.commentCardBoxTop}>
-              <p>{creatorName}</p>
+              <span>{creatorName ? creatorName : "Mr. Mensah"} </span>
               <span>1 d</span>
             </div>
-            <p className={style.commentCardBoxText}>
-             {comment} 
-            </p>
+            <div className={style.commentCardBoxText}>
+              <p>
+                {" "}
+                <span className={style.replyingTo}>{replyingTo}</span> {reply}{" "}
+              </p>
+            </div>
           </div>
 
-          <div className={style.commentCardBtm} dataset='fist'>
+          <div className={style.commentCardBtm} dataset="fist">
             <div className={style.commentCardBtmLeft}>
               <p className={style.commentCardBtmLeftLike}>Like</p>
               <p onClick={handleReply}>Reply</p>
@@ -51,10 +61,13 @@ function CommentCard({ comment, replies, setIsReply, setCommentId, id, image, cr
             <p className={style.commentCardBtmRight}>1 💖</p>
           </div>
         </div>
+      </div>
 
-<div>
-      {  replies?.map(reply => (
-        <ReplyCard
+      {/* SUB-COMMENTS */}
+      {/* {<div> <CommentCard /></div>} */}
+
+      {/* {  replies?.map(reply => (
+        <CommentCard 
         key={reply?.id}
               id={reply?.id}
               reply={reply?.reply}
@@ -65,17 +78,9 @@ function CommentCard({ comment, replies, setIsReply, setCommentId, id, image, cr
               replies={reply?.reply}
               replyingTo={reply?.replyingTo}
         />
-      ))}
-      </div>
-      </div>
-
-      {/* SUB-COMMENTS */}
-      
-
-    
-
+      ))} */}
     </div>
   );
 }
 
-export default CommentCard;
+export default ReplyCard;

@@ -9,11 +9,12 @@ import { Avatar, TextareaAutosize } from "@mui/material";
 import { useStateContex } from "../store/StateProvider";
 import Spinner from "../components/loadash/Spinner";
 import CommentCard from "../components/comment/CommentCard";
-import { Camera, ChevronDown } from "react-bootstrap-icons";
+import { Camera, ChevronDown, Globe } from "react-bootstrap-icons";
 import {
   addComment,
   fetchComments,
   addMorecomments,
+  addReply,
 } from "../actions/comments";
 import { commentPst } from "../actions/posts";
 
@@ -26,16 +27,21 @@ function PostDetails() {
   const user = JSON.parse(localStorage.getItem("profile"));
   const [focused, setFocused] = useState(false);
 
-  const { darkMode, focus, replyingTo } = useStateContex();
+  const { darkMode, focus, replyingTo, setReplyingTo } = useStateContex();
   const { post, isLoading } = useSelector((state) => state.posts);
   const { comments, commentsId } = useSelector((state) => state.comments);
+  const [commentId, setCommentId] = useState("");
+
   const sortComments = comments
     .slice()
     .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
-  const disable = !comment.trim() || !comment.length > 0;
+  const disable =
+    !comment.trim() &&
+    !comment.length > 0 &&
+    !reply.trim() &&
+    !reply.length > 0;
 
   const commentsRef = useRef();
-  console.log(replyingTo);
 
   useEffect(() => {
     if (!user) navigate("/auth");
@@ -44,7 +50,11 @@ function PostDetails() {
   }, [id]);
 
   const handleChange = (e) => {
-    setComment(e.target.value);
+    if (isReply) {
+      setReply(e.target.value);
+    } else {
+      setComment(e.target.value);
+    }
   };
 
   const commentData = {
@@ -52,29 +62,46 @@ function PostDetails() {
     image: "",
     creatorName: user?.result?.displayName || user?.result?.name,
     userDp: user?.result?.photoURL,
+    replies: [],
   };
 
+  console.log(commentId);
   const replyData = {
-    reply,
+    creatorName: user?.result?.displayName || user?.result?.name,
+    userDp: user?.result?.photoURL,
+    reply: reply,
     replyingTo,
+    commentId: commentId,
   };
 
-  const handleSubmit = async (e, value) => {
-    e.preventDefault();
-    if (value === "comment") {
-      commentsRef.current?.scrollIntoView({ behavior: "smooth" });
-      dispatch(commentPst(id));
-      if (commentsId) {
-        dispatch(addMorecomments(commentsId, { commentData, postId: id }));
-      } else {
-        dispatch(addComment({ commentData, postId: id }));
-      }
+  const [isReply, setIsReply] = useState(false);
 
-      setComment("");
+  const cancelReply = () => {
+    setIsReply(false);
+    setReplyingTo("");
+  };
+
+  const handleSubmit = async (e) => {
+    console.log("first");
+    e.preventDefault();
+    // if (!isReply) {
+    commentsRef.current?.scrollIntoView({ behavior: "smooth" });
+    dispatch(commentPst(id));
+    if (commentsId) {
+      dispatch(addMorecomments(commentsId, { commentData, postId: id }));
     } else {
-      // dispatch(addReply(commentsId, {replyData }))
-      setReply('')
+      dispatch(addComment({ commentData, postId: id }));
     }
+    // }
+
+    setComment("");
+  };
+
+  const handleReply = () => {
+    console.log("Gone");
+    dispatch(addReply(commentsId, replyData));
+
+    setReply("");
   };
 
   if (isLoading)
@@ -126,31 +153,37 @@ function PostDetails() {
           {sortComments?.map((comment, i) => (
             <CommentCard
               key={i}
+              id={comment.id}
               comment={comment.comment}
               timestamp={comment.createdAt}
               image={comment.image}
               userDp={comment.userDp}
               creatorName={comment.creatorName}
+              setIsReply={setIsReply}
+              setCommentId={setCommentId}
+              replies={comment.replies}
             />
           ))}
         </div>
       </div>
 
       <div className={`${style.comment__footer} ${focused && style.focused}`}>
-        {replyingTo.length && (
-        <div className={style.replying}>
-          <p>
-            Replying to <span>{replyingTo}</span>
-          </p>
-        </div>
-         )} 
+        {replyingTo && isReply && (
+          <div className={style.replying}>
+            <p>
+              Replying to <span>{replyingTo}</span>
+            </p>
+            <Globe />
+            <p onClick={cancelReply}>Cancel</p>
+          </div>
+        )}
         <div className={`${style.comment__form}`}>
           <Avatar
             src={user?.result?.photoURL}
             className={style.comment__formAvatar}
           />
           <form onSubmit={handleSubmit}>
-            {!replyingTo ? (
+            {!replyingTo && !isReply && (
               <TextareaAutosize
                 className={style.comment__textarea}
                 placeholder="Leave a comment here..."
@@ -163,15 +196,16 @@ function PostDetails() {
                 onBlur={(e) => setFocused(false)}
                 multiline="multiline"
               />
-            ) : (
+            )}
+            {replyingTo && isReply && (
               <TextareaAutosize
                 className={style.comment__textarea}
                 placeholder="Leave your reply here..."
                 value={reply}
                 maxRows={14}
                 type="text"
-                autoFocus={true}
-                onChange={(e) => setReply(e.target.value)}
+                autoFocus={isReply}
+                onChange={handleChange}
                 onFocus={(e) => setFocused(true)}
                 onBlur={(e) => setFocused(false)}
                 multiline="multiline"
@@ -185,14 +219,26 @@ function PostDetails() {
             <div className={style.footerBotmLeft}>
               <Camera className={style.footerCamera} />
             </div>
+            {/* {replyingTo && isReply && ( */}
             <button
-              onClick={handleSubmit}
-              disabled={disable}
+              onClick={handleReply}
+              // disabled={disable}
               type="button"
               className={`${style.button} ${disable && style.buttonDisable}`}
             >
               Reply
             </button>
+            {/* )} */}
+            {!replyingTo && !isReply && (
+              <button
+                onClick={handleSubmit}
+                // disabled={disable}
+                type="button"
+                className={`${style.button} ${disable && style.buttonDisable}`}
+              >
+                Comment
+              </button>
+            )}
           </div>
         )}
       </div>

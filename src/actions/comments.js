@@ -4,7 +4,8 @@ import {
   error,
   isloading,
   fetchcomments,
-  pushComment
+  pushComment,
+  pushReply
 } from "../redux/comments";
 
 export const fetchComments = (id) => async (dispatch) => {
@@ -35,6 +36,16 @@ export const addComment = (comment) => async (dispatch) => {
       const {data} = await api.pushComment(id, post);
   
       dispatch(pushComment(data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  export const addReply = (id, reply) => async (dispatch) => {
+    try {
+      const {data} = await api.pushReply(id, reply);
+  
+      dispatch(pushReply(data));
     } catch (error) {
       console.error(error);
     }

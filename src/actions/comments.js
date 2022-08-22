@@ -4,8 +4,9 @@ import {
   error,
   isloading,
   fetchcomments,
-  pushComment,
-  pushReply
+  // pushComment,
+  pushReply,
+  likeComt,
 } from "../redux/comments";
 
 export const fetchComments = (id) => async (dispatch) => {
@@ -20,33 +21,45 @@ export const fetchComments = (id) => async (dispatch) => {
 };
 
 export const addComment = (comment) => async (dispatch) => {
-    try {
-      const { data } = await api.addComment(comment);
+  try {
+    const { data } = await api.addComment(comment);
 
-      console.log(data)
-  
-      dispatch(createComment(data));
-    } catch (error) {
-      console.error(error);
-    }
-  };
+    console.log(data);
 
-  export const addMorecomments = (id, post) => async (dispatch) => {
-    try {
-      const {data} = await api.pushComment(id, post);
-  
-      dispatch(pushComment(data));
-    } catch (error) {
-      console.error(error);
-    }
-  };
+    dispatch(createComment(data));
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-  export const addReply = (id, reply) => async (dispatch) => {
-    try {
-      const {data} = await api.pushReply(id, reply);
-  
-      dispatch(pushReply(data));
-    } catch (error) {
-      console.error(error);
-    }
-  };
+// export const addMorecomments = (id, post) => async (dispatch) => {
+//   try {
+//     const {data} = await api.pushComment(id, post);
+
+//     dispatch(pushComment(data));
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
+
+export const addReply = (id, reply) => async (dispatch) => {
+  try {
+    const { data } = await api.pushReply(id, reply);
+
+    dispatch(pushReply(data));
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const likeComment = (id, commentId) => async (dispatch) => {
+  console.log(id);
+  try {
+    const { data } = await api.likeComment(id, commentId);
+    console.log(data);
+
+    dispatch(likeComt(data));
+  } catch (error) {
+    console.error(error);
+  }
+};

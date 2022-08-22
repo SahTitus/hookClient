@@ -86,10 +86,10 @@ function AddPost() {
 
     Resizer.imageFileResizer(
       file,
-      600,
       700,
+      770,
       "JPEG",
-      90,
+      92,
       0,
       (uri) => {
         setImage(uri);

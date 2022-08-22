@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "https://hookengine.herokuapp.com" });
+const API = axios.create({ baseURL: "http://localhost:5000" });
 // const linkUrl = "https://hooklearn.herokuapp.com/link"
 // const url = "https://hooklearn.herokuapp.com";
 // const url = "https://hookengine.vercel.app";
@@ -28,6 +28,7 @@ export const updatePost = (id, updatedPost) => API.patch(`/posts/${id}`, updated
 export const pushComment = (id, updatedComment) => API.patch(`/comments/${id}/more`, updatedComment);
 export const pushReply = (id, reply) => API.patch(`/comments/${id}/reply`, reply);
 export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
+export const likeComment = (id, commentId) => API.patch(`/comments/${id}/likeComment`, commentId);
 export const commentPost = (id) => API.patch(`/posts/${id}/commentPost`);
 export const rePost = (id) => API.patch(`/posts/${id}/rePost`);
 

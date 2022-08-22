@@ -133,6 +133,12 @@ margin-top: 50px;
 color: #1fbb5d;
 }
 
+.bullet {
+ margin: 0 5px;
+ font-size: 5px;
+ color: rgb(202, 202, 202);
+}
+
 .comment__form {
     display: flex;
     align-items: center;

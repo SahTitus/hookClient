@@ -78,6 +78,7 @@ export const likePost = (id) => async (dispatch) => {
     console.error(error);
   }
 };
+
 export const rePost = (id) => async (dispatch) => {
   console.log(id);
   try {
@@ -90,12 +91,14 @@ export const rePost = (id) => async (dispatch) => {
   }
 };
 
+// Check this 
 export const commentPst = (id) => async (dispatch) => {
   console.log(id);
   try {
     const { data } = await api.commentPost(id);
     console.log(data);
 
+    //here
     dispatch(like(data));
   } catch (error) {
     console.error(error);

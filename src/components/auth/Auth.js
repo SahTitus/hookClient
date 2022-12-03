@@ -7,7 +7,7 @@ import Gd from "../../images/Gd.png";
 import Fb from "../../images/Fb.jpg";
 import Hook from "../../images/Hook.jpg";
 import "../../styles/Login.css";
-import { createUserWithEmailAndPassword, FacebookAuthProvider, signInWithPopup, GoogleAuthProvider } from "@firebase/auth";
+import { FacebookAuthProvider, signInWithPopup, GoogleAuthProvider } from "@firebase/auth";
 import { auth } from "../../firebase";
 import Input from "./Input";
 import { useStateContex } from "../../store/StateProvider";
